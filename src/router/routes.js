@@ -2,13 +2,14 @@
 export default [
   {
     path: '/',
-    component: () => import('layouts/default'),
+    component: () => import('layouts/Login'),
     children: [
-      { path: '', component: () => import('pages/index') }
+      { path: '', component: () => import('pages/Welcome') },
+      { path: '/login', component: () => import('pages/Login') },
+      { path: '/signup', component: () => import('pages/Signup') }
     ]
   },
-
-  { // Always leave this as last one
+  {
     path: '*',
     component: () => import('pages/404')
   }
