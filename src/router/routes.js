@@ -13,7 +13,8 @@ export default [
     path: '/',
     component: () => import('layouts/Default'),
     children: [
-      { path: '/dashboard', component: () => import('pages/Dashboard') }
+      { path: '/dashboard', component: () => import('pages/Dashboard') },
+      { path: '/profile', component: () => import('pages/Profile') }
     ]
   },
   {
