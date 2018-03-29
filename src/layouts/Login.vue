@@ -8,14 +8,6 @@
 
 <script>
 export default {
-  name: 'Login',
-  data () {
-    return {
-      leftDrawer: true
-    }
-  }
+  name: 'Login'
 }
 </script>
-
-<style>
-</style>

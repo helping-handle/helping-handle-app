@@ -12,15 +12,16 @@
       </div>
       <div class="row justify-center">
         <p>
-          Helping individuals in need raise money and
-          better their lives for themselves, their families, and their community.
+          Helping individuals in need raise money and better their lives for
+          themselves, their families, and their community.
         </p>
         <p>
-          Fundraise towards foals, get unstuck, and be the best version of yourself you can be. Start today!
+          Fundraise towards foals, get unstuck, and be the best version of
+          yourself you can be. Start today!
         </p>
       </div>
       <div class="row justify-center">
-        <q-btn
+      <q-btn
           push
           color="primary"
           icon="home"

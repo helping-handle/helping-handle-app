@@ -12,8 +12,8 @@ module.exports = function (ctx) {
     extras: [
       ctx.theme.mat ? 'roboto-font' : null,
       'material-icons'
-      // 'ionicons',
       // 'mdi',
+      // 'ionicons',
       // 'fontawesome'
     ],
     supportIE: false,
@@ -42,35 +42,35 @@ module.exports = function (ctx) {
       // port: 8080,
       open: true // opens browser window automatically
     },
-    // framework: 'all' --- includes everything; for dev only!
-    framework: {
-      components: [
-        'QLayout',
-        'QLayoutHeader',
-        'QLayoutDrawer',
-        'QPageContainer',
-        'QPage',
-        'QToolbar',
-        'QToolbarTitle',
-        'QBtn',
-        'QIcon',
-        'QList',
-        'QListHeader',
-        'QItem',
-        'QItemMain',
-        'QItemSide'
-      ],
-      directives: [
-        'Ripple'
-      ],
-      // Quasar plugins
-      plugins: [
-        'Notify'
-      ]
-    },
-    // animations: 'all' --- includes all animations
-    animations: [
-    ],
+    framework: 'all',
+    // framework: {
+    //   components: [
+    //     'QLayout',
+    //     'QLayoutHeader',
+    //     'QLayoutDrawer',
+    //     'QPageContainer',
+    //     'QPage',
+    //     'QToolbar',
+    //     'QToolbarTitle',
+    //     'QBtn',
+    //     'QIcon',
+    //     'QList',
+    //     'QListHeader',
+    //     'QItem',
+    //     'QItemMain',
+    //     'QItemSide'
+    //   ],
+    //   directives: [
+    //     'Ripple'
+    //   ],
+    //   // Quasar plugins
+    //   plugins: [
+    //     'Notify'
+    //   ]
+    // },
+    animations: 'all',
+    // animations: [
+    // ],
     pwa: {
       cacheExt: 'js,html,css,ttf,eot,otf,woff,woff2,json,svg,gif,jpg,jpeg,png,wav,ogg,webm,flac,aac,mp4,mp3',
       manifest: {
