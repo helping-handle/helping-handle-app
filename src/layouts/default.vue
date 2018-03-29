@@ -3,62 +3,62 @@
     <q-layout-header>
       <q-toolbar
         color="primary"
-        :glossy="$q.theme === 'mat'"
-        :inverted="$q.theme === 'ios'"
       >
+        <q-toolbar-title>
+          Helping Handle
+        </q-toolbar-title>
         <q-btn
           flat
-          dense
           round
-          @click="leftDrawerOpen = !leftDrawerOpen"
-          aria-label="Menu"
-        >
-          <q-icon name="menu" />
-        </q-btn>
-
-        <q-toolbar-title>
-          Quasar App
-          <div slot="subtitle">Running on Quasar v{{ $q.version }}</div>
-        </q-toolbar-title>
+          icon="settings"
+          @click="$router.push('/profile')"
+          aria-label="Settings"
+        />
+        <q-btn
+          flat
+          round
+          dense
+          icon="power"
+          @click="$router.push('/')"
+          aria-label="Logout"
+        />
       </q-toolbar>
     </q-layout-header>
-
-    <q-layout-drawer
-      v-model="leftDrawerOpen"
-      :content-class="$q.theme === 'mat' ? 'bg-grey-2' : null"
-    >
-      <q-list
-        no-border
-        link
-        inset-delimiter
-      >
-        <q-list-header>Essential Links</q-list-header>
-        <q-item @click.native="openURL('http://quasar-framework.org')">
-          <q-item-side icon="school" />
-          <q-item-main label="Docs" sublabel="quasar-framework.org" />
-        </q-item>
-        <q-item @click.native="openURL('https://github.com/quasarframework/')">
-          <q-item-side icon="code" />
-          <q-item-main label="GitHub" sublabel="github.com/quasarframework" />
-        </q-item>
-        <q-item @click.native="openURL('https://discord.gg/5TDhbDg')">
-          <q-item-side icon="chat" />
-          <q-item-main label="Discord Chat Channel" sublabel="https://discord.gg/5TDhbDg" />
-        </q-item>
-        <q-item @click.native="openURL('http://forum.quasar-framework.org')">
-          <q-item-side icon="record_voice_over" />
-          <q-item-main label="Forum" sublabel="forum.quasar-framework.org" />
-        </q-item>
-        <q-item @click.native="openURL('https://twitter.com/quasarframework')">
-          <q-item-side icon="rss feed" />
-          <q-item-main label="Twitter" sublabel="@quasarframework" />
-        </q-item>
-      </q-list>
-    </q-layout-drawer>
 
     <q-page-container>
       <router-view />
     </q-page-container>
+    <q-layout-footer>
+      <q-toolbar
+        color="primary"
+        class="justify-center"
+      >
+        <q-btn
+          flat
+          label="Dashboard"
+          icon="home"
+          @click="$router.push('/dashboard')"
+        />
+        <q-btn
+          flat
+          label="Explore"
+          icon="search"
+          @click="$router.push('/explore')"
+        />
+        <q-btn
+          flat
+          label="History"
+          icon="history"
+          @click="$router.push('/history')"
+        />
+        <q-btn
+          flat
+          label="Favorites"
+          icon="star"
+          @click="$router.push('/favorites')"
+        />
+      </q-toolbar>
+    </q-layout-footer>
   </q-layout>
 </template>
 
@@ -68,9 +68,6 @@ import { openURL } from 'quasar'
 export default {
   name: 'LayoutDefault',
   data () {
-    return {
-      leftDrawerOpen: this.$q.platform.is.desktop
-    }
   },
   methods: {
     openURL
@@ -78,5 +75,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="stylus">
+  .q-layout-footer .q-toolbar .q-btn
+    margin: 0 16px
 </style>

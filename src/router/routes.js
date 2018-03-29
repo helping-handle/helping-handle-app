@@ -10,6 +10,13 @@ export default [
     ]
   },
   {
+    path: '/',
+    component: () => import('layouts/Default'),
+    children: [
+      { path: '/dashboard', component: () => import('pages/Dashboard') }
+    ]
+  },
+  {
     path: '*',
     component: () => import('pages/404')
   }
