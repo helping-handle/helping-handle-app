@@ -24,9 +24,8 @@
             <q-btn
               push
               color="primary"
-              icon="accessibility"
-              label="Sign Up"
-              @click="$router.push('/update')"
+              label="Update"
+              @click="$router.push('/dashboard')"
             />
           </q-card-actions>
         </q-card>

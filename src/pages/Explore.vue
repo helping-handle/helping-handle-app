@@ -2,7 +2,7 @@
   <q-page padding class="docs-btn row justify-center">
     <div style="width: 800px; max-width: 90vw;">
       <div class="row justify-center">
-        <h3>Dashboard</h3>
+        <h3>Explore</h3>
       </div>
     </div>
   </q-page>

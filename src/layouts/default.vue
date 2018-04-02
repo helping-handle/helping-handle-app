@@ -49,13 +49,13 @@
           flat
           label="History"
           icon="history"
-          @click="$router.push('/history')"
+          @click="$router.push('/user/history')"
         />
         <q-btn
           flat
           label="Favorites"
           icon="star"
-          @click="$router.push('/favorites')"
+          @click="$router.push('/user/favorites')"
         />
       </q-toolbar>
     </q-layout-footer>
