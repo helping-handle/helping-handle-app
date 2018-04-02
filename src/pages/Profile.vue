@@ -37,7 +37,7 @@
 
 <script>
 export default {
-  name: 'Welcome',
+  name: 'ProfilePage',
   data () {
     return {
       hasUsername: true

@@ -66,7 +66,7 @@
 import { openURL } from 'quasar'
 
 export default {
-  name: 'LayoutDefault',
+  name: 'DefaultLayout',
   data () {
   },
   methods: {

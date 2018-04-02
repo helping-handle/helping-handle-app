@@ -45,7 +45,7 @@
 
 <script>
 export default {
-  name: 'Welcome',
+  name: 'SignUpPage',
   data () {
     return {
       hasUsername: true
