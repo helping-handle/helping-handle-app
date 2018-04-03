@@ -3,9 +3,14 @@
     <div style="width: 800px; max-width: 90vw;">
       <div class="row justify-center">
         <h3>Explore</h3>
-        <pre>
-          {{ campaigns }}
-        </pre>
+      </div>
+      <div class="row justify-center">
+        <CampaignCard
+          v-for="campaign in campaigns"
+          :key="campaign.id"
+          :campaign="campaign"
+        >
+      </CampaignCard>
       </div>
     </div>
   </q-page>
@@ -13,9 +18,13 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import CampaignCard from 'components/CampaignCard'
 
 export default {
   name: 'ExplorePage',
+  components: {
+    CampaignCard
+  },
   computed: mapGetters({
     campaigns: 'campaigns/all'
   }),

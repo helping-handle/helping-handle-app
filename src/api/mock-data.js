@@ -23,22 +23,25 @@ module.exports = {
     {
       id: 'c_1',
       name: 'Pay November Rent',
-      desc: 'I need some help paying my rent for this month. All proceeds' +
+      desc: 'I need some help paying my rent for this month. All proceeds ' +
             'go directly to my landlord!',
-      amount: 300
+      amount: 300,
+      percent: 67
     },
     {
       id: 'c_2',
       name: 'Buy Week\'s Groceries',
       desc: 'Items include kale, wheatgrass, kombucha, and saffron.',
-      amount: 40
+      amount: 40,
+      percent: 90
     },
     {
       id: 'c_3',
       name: 'Christmas Present for Kids',
       desc: 'My children need as many Bionicles as possible! Please help' +
             'me buy 10 of them so my son can unite them into the Toa Muta',
-      amount: 70
+      amount: 70,
+      percent: 14
     }
   ]
 }
