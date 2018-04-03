@@ -63,15 +63,8 @@
 </template>
 
 <script>
-import { openURL } from 'quasar'
-
 export default {
-  name: 'DefaultLayout',
-  data () {
-  },
-  methods: {
-    openURL
-  }
+  name: 'DefaultLayout'
 }
 </script>
 
