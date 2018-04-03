@@ -11,7 +11,7 @@
           flat
           round
           icon="settings"
-          @click="$router.push('/profile')"
+          @click="$router.push('/user/profile')"
           aria-label="Settings"
         />
         <q-btn

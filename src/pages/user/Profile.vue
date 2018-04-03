@@ -10,9 +10,28 @@
           <q-card-main>
             <q-input v-model="name" float-label="Full Name" />
             <q-input v-model="email" float-label="Email Address" />
-            <q-input v-if="!hasUsername" v-model="email" float-label="Username" />
-            <q-input type="password" float-label="Current Password" />
-            <q-input type="password" float-label="Password" />
+            <q-input v-if="username" v-model="username" float-label="Username" />
+            <q-input v-model="password" type="password" float-label="Current Password" />
+            <q-input v-model="password" type="password" float-label="Password" />
+          </q-card-main>
+          <q-card-separator />
+          <q-card-main>
+            <q-chips-input
+              v-model="education"
+              placeholder="Education"
+            />
+          </q-card-main>
+          <q-card-main>
+            <q-chips-input
+              v-model="workplaces"
+              placeholder="Workplace"
+            />
+          </q-card-main>
+          <q-card-main>
+            <q-chips-input
+              v-model="interests"
+              placeholder="Interests"
+            />
           </q-card-main>
           <q-card-actions class="justify-center">
             <q-btn
@@ -39,18 +58,23 @@ export default {
   name: 'ProfilePage',
   data () {
     return {
-      hasUsername: true
+      name: 'Jason Nedell',
+      username: 'nedell',
+      email: 'jason@pnc.one',
+      hasUsername: true,
+      education: ['University Colorado, Boulder'],
+      workplaces: ['Pinecone Industries Limited'],
+      interests: ['Snowboarding', 'Tin Whistle', 'Bassoon', 'Electronics']
     }
   }
 }
 </script>
 
 <style scoped lang="stylus">
-  img
-    width: 128px
-    height: 128px
   .q-btn
     margin: 5px
   .q-card
     width: 400px;
+  .q-input
+    margin-bottom: 16px
 </style>
