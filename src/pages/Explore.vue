@@ -3,21 +3,24 @@
     <div style="width: 800px; max-width: 90vw;">
       <div class="row justify-center">
         <h3>Explore</h3>
+        <pre>
+          {{ campaigns }}
+        </pre>
       </div>
     </div>
   </q-page>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  name: 'DashboardPage'
+  name: 'ExplorePage',
+  computed: mapGetters({
+    campaigns: 'campaigns/all'
+  }),
+  created () {
+    this.$store.dispatch('campaigns/getAll')
+  }
 }
 </script>
-
-<style scoped lang="stylus">
-  img
-    width: 256px
-    height: 256px
-  .q-btn
-    margin: 5px
-</style>
