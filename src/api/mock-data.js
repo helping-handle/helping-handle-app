@@ -17,31 +17,58 @@ module.exports = {
       name: 'Jason Nedell',
       username: 'nedell',
       email: 'jason@pnc.one'
+    },
+    {
+      id: 'u_4',
+      name: 'Rickon Stark',
+      username: 'shaggy',
+      email: 'rickon@north.com'
+    },
+    {
+      id: 'u_5',
+      name: 'Myrcella Baratheon',
+      username: 'princess',
+      email: 'princess@theredkeep.gov'
     }
   ],
   campaigns: [
     {
       id: 'c_1',
+      u_id: 'u_4',
       name: 'Pay November Rent',
       desc: 'I need some help paying my rent for this month. All proceeds ' +
             'go directly to my landlord!',
       amount: 300,
-      percent: 67
+      percent: 67,
+      donors: 13
     },
     {
       id: 'c_2',
+      u_id: 'u_4',
       name: 'Buy Week\'s Groceries',
-      desc: 'Items include kale, wheatgrass, kombucha, and saffron.',
+      desc: 'Items include eggs, milk, vegetables, and rice.',
       amount: 40,
-      percent: 90
+      percent: 90,
+      donors: 5
     },
     {
       id: 'c_3',
+      u_id: 'u_4',
       name: 'Christmas Present for Kids',
       desc: 'My children need as many Bionicles as possible! Please help' +
             'me buy 10 of them so my son can unite them into the Toa Muta',
       amount: 70,
-      percent: 14
+      percent: 14,
+      donors: 34
+    },
+    {
+      id: 'c_4',
+      u_id: 'u_5',
+      name: 'Bus Fare',
+      desc: 'Looking to obtain bus fair for the month so I can commute to work',
+      amount: 70,
+      percent: 0,
+      donors: 0
     }
   ]
 }

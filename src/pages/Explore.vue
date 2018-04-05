@@ -2,12 +2,12 @@
   <q-page padding class="docs-btn row justify-center">
     <div style="width: 800px; max-width: 90vw;">
       <div class="row justify-center">
-      </div>
-      <div class="row justify-center">
         <CampaignCard
           v-for="campaign in campaigns"
           :key="campaign.id"
-          :campaign="campaign"
+          :name="campaign.name"
+          :desc="campaign.desc"
+          :percent="campaign.percent"
         >
       </CampaignCard>
       </div>
@@ -32,3 +32,11 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="stylus">
+  img
+    width: 256px
+    height: 256px
+  .q-btn
+    margin: 5px
+</style>

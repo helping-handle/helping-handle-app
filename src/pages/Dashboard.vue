@@ -2,14 +2,35 @@
   <q-page padding class="docs-btn row justify-center">
     <div style="width: 800px; max-width: 90vw;">
       <div class="row justify-center">
+        <CampaignCard
+          v-for="campaign in campaigns"
+          :key="campaign.id"
+          :name="campaign.name"
+          :desc="campaign.desc"
+          :percent="campaign.percent"
+          :donors="campaign.donors"
+        >
+        </CampaignCard>
       </div>
     </div>
   </q-page>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import CampaignCard from 'components/CampaignCard'
+
 export default {
-  name: 'DashboardPage'
+  name: 'DashboardPage',
+  components: {
+    CampaignCard
+  },
+  computed: mapGetters({
+    campaigns: 'campaigns/all'
+  }),
+  created () {
+    this.$store.dispatch('campaigns/getAll')
+  }
 }
 </script>
 

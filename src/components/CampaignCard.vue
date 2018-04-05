@@ -1,16 +1,22 @@
 <template>
-  <q-card color="secondary q-ma-sm">
+  <q-card
+    v-bind:class="cardClass"
+  >
     <q-card-title>
-      {{ campaign.name }}
+      {{ name }}
       <span slot="subtitle">
-        {{ campaign.desc }}
+        {{ desc }}
        </span>
     </q-card-title>
     <q-card-main>
       <q-progress
-        :percentage="campaign.percent"
-        stripe
-        color="teal-1" />
+        :percentage="percent"
+        v-bind:class="progressClass"
+      />
+    </q-card-main>
+    <q-card-main
+      v-if="donors != null">
+      Donors: {{ donors }}
     </q-card-main>
   </q-card>
 </template>
@@ -19,7 +25,34 @@
 export default {
   name: 'CampaignCard',
   props: {
-    campaign: Object
+    name: {
+      type: String,
+      required: true
+    },
+    desc: {
+      type: String,
+      required: true
+    },
+    percent: {
+      type: Number,
+      required: true
+    },
+    donors: {
+      type: Number
+    }
+  },
+  computed: {
+    cardClass: function () {
+      return {
+        'q-ma-sm': true
+      }
+    },
+    progressClass: function () {
+      return {
+        'text-deep-purple-6': this.donors == null,
+        'text-teal-6': this.donors != null
+      }
+    }
   }
 }
 </script>
