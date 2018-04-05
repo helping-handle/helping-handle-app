@@ -10,12 +10,26 @@
       <q-progress
         :percentage="percent"
         v-bind:class="progressClass"
+        style="height: 12px"
       />
     </q-card-main>
-    <q-card-main
-      v-if="donors != null">
+    <q-card-main v-if="owned">
       Donors: {{ donors }}
     </q-card-main>
+    <template v-if="!owned">
+      <q-card-separator />
+      <q-card-actions>
+        <q-btn
+          flat
+          round
+          color="red"
+          icon="favorite outline"
+        />
+        <q-btn flat>Donate $1</q-btn>
+        <q-btn flat>Donate</q-btn>
+        <q-btn flat>Share</q-btn>
+      </q-card-actions>
+    </template>
   </q-card>
 </template>
 
@@ -23,6 +37,9 @@
 export default {
   name: 'CampaignCard',
   props: {
+    owned: {
+      default: false
+    },
     name: {
       type: String,
       required: true
@@ -42,8 +59,8 @@ export default {
   computed: {
     progressClass: function () {
       return {
-        'text-deep-purple-6': this.donors == null,
-        'text-teal-6': this.donors != null
+        'text-deep-purple-6': !this.owned,
+        'text-teal-6': this.owned
       }
     }
   }
@@ -54,5 +71,5 @@ export default {
   .q-card
     width: 100%
   .q-progress
-    height: 15px
+    height: 40px
 </style>

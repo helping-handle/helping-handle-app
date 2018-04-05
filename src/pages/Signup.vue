@@ -15,11 +15,25 @@
           </q-card-title>
           <q-card-separator />
           <q-card-main>
-            <q-input v-model="name" float-label="Full Name" />
-            <q-input v-model="email" float-label="Email Address" />
-            <q-checkbox v-model="hasUsername" label="Use email address as Username" />
-            <q-input v-if="!hasUsername" v-model="email" float-label="Username" />
-            <q-input type="password" float-label="Password" />
+            <q-input
+              v-model="name"
+              float-label="Full Name" />
+            <q-input
+              v-model="email"
+              float-label="Email Address" />
+            <q-checkbox
+              v-model="hasUsername"
+              label="Use email address as Username" />
+            <q-input
+              v-if="!hasUsername"
+              v-model="username"
+              float-label="Username"
+            />
+            <q-input
+              v-model="username"
+              type="password"
+              float-label="Password"
+            />
           </q-card-main>
           <q-card-separator />
           <q-card-actions class="justify-center">
@@ -48,6 +62,9 @@ export default {
   name: 'SignUpPage',
   data () {
     return {
+      name: '',
+      email: '',
+      username: '',
       hasUsername: true
     }
   }

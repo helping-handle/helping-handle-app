@@ -75,6 +75,4 @@ export default {
     height: 128px
   .q-btn
     margin: 5px
-  .q-card
-    padding-bottom: 0px
 </style>
