@@ -54,7 +54,7 @@
         <q-btn
           flat
           label="Favorites"
-          icon="star"
+          icon="favorite"
           @click="$router.push('/user/favorites')"
         />
       </q-toolbar>
