@@ -1,5 +1,5 @@
 <template>
-  <q-page padding class="docs-btn row justify-center">
+  <q-page padding class="row justify-center">
     <div style="width: 800px; max-width: 90vw;">
       <div class="row justify-center">
         <img

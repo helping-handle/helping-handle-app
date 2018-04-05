@@ -1,5 +1,5 @@
 <template>
-  <q-page padding class="docs-btn row justify-center">
+  <q-page padding class="row justify-center">
     <div style="width: 800px; max-width: 90vw;">
       <div class="row justify-center">
         <img
@@ -9,14 +9,21 @@
         <h2>Helping Handle</h2>
       </div>
       <div class="row justify-center">
-        <q-card inline class="bigger q-ma-sm">
+        <q-card class="q-ma-sm">
           <q-card-title>
             Login
           </q-card-title>
           <q-card-separator />
           <q-card-main>
-            <q-input v-model="text" float-label="Username / Email Address" />
-            <q-input v-model="password" type="password" float-label="Password" />
+            <q-input
+              v-model="username"
+              float-label="Username / Email Address"
+            />
+            <q-input
+              v-model="password"
+              type="password"
+              float-label="Password"
+            />
           </q-card-main>
           <q-card-separator />
           <q-card-actions class="justify-center">
@@ -42,7 +49,13 @@
 
 <script>
 export default {
-  name: 'LoginPage'
+  name: 'LoginPage',
+  data () {
+    return {
+      username: '',
+      password: ''
+    }
+  }
 }
 </script>
 

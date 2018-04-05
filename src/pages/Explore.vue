@@ -1,5 +1,5 @@
 <template>
-  <q-page padding class="docs-btn row justify-center">
+  <q-page padding class="row justify-center">
     <div style="width: 800px; max-width: 90vw;">
       <div class="row justify-center">
         <CampaignCard
@@ -8,6 +8,7 @@
           :name="campaign.name"
           :desc="campaign.desc"
           :percent="campaign.percent"
+          :donors="campaign.donors"
         >
       </CampaignCard>
       </div>

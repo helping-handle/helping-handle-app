@@ -1,7 +1,5 @@
 <template>
-  <q-card
-    v-bind:class="cardClass"
-  >
+  <q-card class="q-ma-sm">
     <q-card-title>
       {{ name }}
       <span slot="subtitle">
@@ -42,11 +40,6 @@ export default {
     }
   },
   computed: {
-    cardClass: function () {
-      return {
-        'q-ma-sm': true
-      }
-    },
     progressClass: function () {
       return {
         'text-deep-purple-6': this.donors == null,

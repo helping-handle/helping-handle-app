@@ -1,6 +1,42 @@
 <template>
-  <q-page padding class="docs-btn row justify-center">
+  <q-page
+    class="q-pa-sm row justify-center">
     <div style="width: 800px; max-width: 90vw;">
+      <div class="row justify-center">
+        <img
+          alt="Profile Icon"
+          src="~assets/female.svg"
+        >
+      </div>
+      <div class="row justify-center">
+        <q-card
+          color="deep-purple-6"
+          class="q-ma-sm"
+        >
+          <q-card-title class="text-center">
+            <h4 class="q-ma-sm">$345</h4>
+            <span slot="subtitle">Money Donated</span>
+          </q-card-title>
+        </q-card>
+        <q-card
+          color="deep-purple-6"
+          class="q-ma-sm"
+        >
+          <q-card-title class="text-center">
+            <h4 class="q-ma-sm">15</h4>
+            <span slot="subtitle">Goals Supported</span>
+          </q-card-title>
+        </q-card>
+        <q-card
+          color="deep-purple-6"
+          class="q-ma-sm"
+        >
+          <q-card-title class="text-center">
+            <h4 class="q-ma-sm">34</h4>
+            <span slot="subtitle">People Helped</span>
+          </q-card-title>
+        </q-card>
+      </div>
       <div class="row justify-center">
         <CampaignCard
           v-for="campaign in campaigns"
@@ -8,7 +44,6 @@
           :name="campaign.name"
           :desc="campaign.desc"
           :percent="campaign.percent"
-          :donors="campaign.donors"
         >
         </CampaignCard>
       </div>
@@ -36,8 +71,10 @@ export default {
 
 <style scoped lang="stylus">
   img
-    width: 256px
-    height: 256px
+    width: 128px
+    height: 128px
   .q-btn
     margin: 5px
+  .q-card
+    padding-bottom: 0px
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <q-page padding class="docs-btn row justify-center">
+  <q-page padding class="row justify-center">
     <div style="width: 800px; max-width: 90vw;">
       <div class="row justify-center">
         <h2>Helping Handle</h2>
@@ -21,19 +21,19 @@
         </p>
       </div>
       <div class="row justify-center">
-      <q-btn
-          push
-          color="primary"
-          icon="home"
-          label="Login"
-          @click="$router.push('/login')"
-        />
         <q-btn
           push
           color="secondary"
           icon="accessibility"
           label="sign Up"
           @click="$router.push('/signup')"
+        />
+        <q-btn
+          push
+          color="primary"
+          icon="home"
+          label="Login"
+          @click="$router.push('/login')"
         />
       </div>
     </div>
