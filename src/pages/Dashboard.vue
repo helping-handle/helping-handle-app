@@ -10,7 +10,7 @@
       </div>
       <div class="row justify-center">
         <q-card
-          color="deep-purple-6"
+          color="indigo-6"
           class="q-ma-sm"
         >
           <q-card-title class="text-center">
@@ -19,7 +19,7 @@
           </q-card-title>
         </q-card>
         <q-card
-          color="deep-purple-6"
+          color="indigo-6"
           class="q-ma-sm"
         >
           <q-card-title class="text-center">
@@ -28,7 +28,7 @@
           </q-card-title>
         </q-card>
         <q-card
-          color="deep-purple-6"
+          color="indigo-6"
           class="q-ma-sm"
         >
           <q-card-title class="text-center">

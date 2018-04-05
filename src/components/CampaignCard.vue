@@ -4,7 +4,7 @@
       {{ name }}
       <span slot="subtitle">
         {{ desc }}
-       </span>
+      </span>
     </q-card-title>
     <q-card-main>
       <q-progress
@@ -38,6 +38,7 @@ export default {
   name: 'CampaignCard',
   props: {
     owned: {
+      type: Boolean,
       default: false
     },
     name: {
@@ -59,8 +60,8 @@ export default {
   computed: {
     progressClass: function () {
       return {
-        'text-deep-purple-6': !this.owned,
-        'text-teal-6': this.owned
+        'text-deep-purple-6': this.owned,
+        'text-indigo-6': !this.owned
       }
     }
   }
@@ -70,6 +71,4 @@ export default {
 <style scoped lang="stylus">
   .q-card
     width: 100%
-  .q-progress
-    height: 40px
 </style>

@@ -1,9 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-layout-header>
-      <q-toolbar
-        color="primary"
-      >
+      <q-toolbar v-bind:class="userTypeColor">
         <q-toolbar-title>
           Helping Handle
         </q-toolbar-title>
@@ -29,42 +27,33 @@
       <router-view />
     </q-page-container>
     <q-layout-footer>
-      <q-toolbar
-        color="primary"
-        class="justify-center"
-      >
-        <q-btn
-          flat
-          label="Dashboard"
-          icon="home"
-          @click="$router.push('/dashboard')"
-        />
-        <q-btn
-          flat
-          label="Explore"
-          icon="search"
-          @click="$router.push('/explore')"
-        />
-        <q-btn
-          flat
-          label="History"
-          icon="history"
-          @click="$router.push('/user/history')"
-        />
-        <q-btn
-          flat
-          label="Favorites"
-          icon="favorite"
-          @click="$router.push('/user/favorites')"
-        />
-      </q-toolbar>
+      <Toolbar :userType="userType">
+      </Toolbar>
     </q-layout-footer>
   </q-layout>
 </template>
 
 <script>
+import Toolbar from 'components/Toolbar'
+
 export default {
-  name: 'DefaultLayout'
+  name: 'DefaultLayout',
+  data () {
+    return {
+      userType: 'recipient'
+    }
+  },
+  components: {
+    Toolbar
+  },
+  computed: {
+    userTypeColor: function () {
+      return {
+        'bg-deep-purple-6': this.userType === 'recipient',
+        'bg-indigo-6': this.userType === 'donor'
+      }
+    }
+  }
 }
 </script>
 
