@@ -1,11 +1,13 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="lHh lpr lFf">
     <q-layout-header>
-      <q-toolbar v-bind:class="userTypeColor">
+      <q-toolbar
+        :color="userColor">
         <q-toolbar-title>
           Helping Handle
         </q-toolbar-title>
         <q-btn
+          v-if="userLogged"
           flat
           round
           icon="settings"
@@ -13,12 +15,27 @@
           aria-label="Settings"
         />
         <q-btn
+          v-if="userLogged"
           flat
           round
           dense
-          icon="power"
-          @click="$router.push('/')"
+          icon="mdi-logout"
+          @click="logout"
           aria-label="Logout"
+        />
+        <q-btn
+          v-if="!userLogged"
+          flat
+          icon="home"
+          @click="$router.push('/login')"
+          label="Login"
+        />
+        <q-btn
+          v-if="!userLogged"
+          flat
+          icon="mdi-account"
+          @click="$router.push('/signup')"
+          label="Sign Up"
         />
       </q-toolbar>
     </q-layout-header>
@@ -27,32 +44,37 @@
       <router-view />
     </q-page-container>
     <q-layout-footer>
-      <Toolbar :userType="userType">
-      </Toolbar>
+      <DonorFooterToolbar v-if="userType == 'donor'">
+      </DonorFooterToolbar>
+      <RecipientFooterToolbar v-if="userType == 'recipient'">
+      </RecipientFooterToolbar>
     </q-layout-footer>
   </q-layout>
 </template>
 
 <script>
-import Toolbar from 'components/Toolbar'
+import { mapActions, mapGetters } from 'vuex'
+
+import DonorFooterToolbar from 'components/DonorFooterToolbar'
+import RecipientFooterToolbar from 'components/RecipientFooterToolbar'
 
 export default {
   name: 'DefaultLayout',
-  data () {
-    return {
-      userType: 'recipient'
-    }
-  },
   components: {
-    Toolbar
+    DonorFooterToolbar,
+    RecipientFooterToolbar
   },
   computed: {
-    userTypeColor: function () {
-      return {
-        'bg-deep-purple-6': this.userType === 'recipient',
-        'bg-indigo-6': this.userType === 'donor'
-      }
-    }
+    ...mapGetters({
+      userLogged: 'user/logged',
+      userColor: 'user/color',
+      userType: 'user/type'
+    })
+  },
+  methods: {
+    ...mapActions({
+      logout: 'user/logout'
+    })
   }
 }
 </script>

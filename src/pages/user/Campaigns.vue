@@ -53,11 +53,11 @@
         class="q-pa-md"
       >
         <div class="q-display-1 q-mb-md">Create New Campaign</div>
-        <q-input v-model="name" float-label="Campaign Name" class="q-mb-md"/>
-        <q-input v-model="email" float-label="Funding Amount" class="q-mb-md"/>
+        <q-input v-model="campaignName" float-label="Campaign Name" class="q-mb-md"/>
+        <q-input v-model="campaignAmount" float-label="Funding Amount" class="q-mb-md"/>
         <p class="caption">Description</p>
         <q-editor
-          v-model="desc"
+          v-model="campaignDesc"
           :toolbar="[
             ['bold', 'italic', 'strike'],
             ['undo', 'redo']
@@ -90,7 +90,9 @@ export default {
   data () {
     return {
       createCampaignDialog: false,
-      desc: ''
+      campaignName: '',
+      campaignAmount: '',
+      campaignDesc: ''
     }
   },
   components: {

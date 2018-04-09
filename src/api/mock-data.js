@@ -1,45 +1,55 @@
+var u1 = {
+  id: 'u_1',
+  name: 'Sonja Page',
+  username: 'sonja',
+  password: 'password',
+  email: 'spage@mba2018.hbs.edu',
+  type: 'donor'
+}
+
+var u2 = {
+  id: 'u_2',
+  name: 'Karla Mendez',
+  username: 'kmendez',
+  password: 'password',
+  email: 'kmendez@mba2018.hbs.edu',
+  type: 'donor'
+}
+
+var u3 = {
+  id: 'u_3',
+  name: 'Jason Nedell',
+  username: 'nedell',
+  password: 'password',
+  email: 'jason@pnc.one',
+  type: 'donor'
+}
+
+var u4 = {
+  id: 'u_4',
+  name: 'Rickon Stark',
+  username: 'shaggy',
+  password: 'password',
+  email: 'rickon@north.com',
+  type: 'recipient'
+}
+
+var u5 = {
+  id: 'u_5',
+  name: 'Myrcella Baratheon',
+  username: 'princess',
+  password: 'password',
+  email: 'princess@theredkeep.gov',
+  type: 'recipient'
+}
+
 module.exports = {
   users: [
-    {
-      id: 'u_1',
-      name: 'Sonja Page',
-      username: 'sonja',
-      password: 'password',
-      email: 'spage@mba2018.hbs.edu',
-      type: 'donor'
-    },
-    {
-      id: 'u_2',
-      name: 'Karla Mendez',
-      username: 'kmendez',
-      password: 'password',
-      email: 'kmendez@mba2018.hbs.edu',
-      type: 'donor'
-    },
-    {
-      id: 'u_3',
-      name: 'Jason Nedell',
-      username: 'nedell',
-      password: 'password',
-      email: 'jason@pnc.one',
-      type: 'donor'
-    },
-    {
-      id: 'u_4',
-      name: 'Rickon Stark',
-      username: 'shaggy',
-      password: 'password',
-      email: 'rickon@north.com',
-      type: 'recipient'
-    },
-    {
-      id: 'u_5',
-      name: 'Myrcella Baratheon',
-      username: 'princess',
-      password: 'password',
-      email: 'princess@theredkeep.gov',
-      type: 'recipient'
-    }
+    u1,
+    u2,
+    u3,
+    u4,
+    u5
   ],
   campaigns: [
     {
@@ -84,5 +94,3 @@ module.exports = {
     }
   ]
 }
-
-// timestamp: Date.now() - Math.floor(Math.random() * 1209600) + 302400

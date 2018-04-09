@@ -23,6 +23,7 @@
               v-model="password"
               type="password"
               float-label="Password"
+              @keyup.enter="login({username, password})"
             />
           </q-card-main>
           <q-card-separator />
