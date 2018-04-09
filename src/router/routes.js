@@ -24,7 +24,8 @@ export default [
     children: [
       { path: 'history', component: () => import('pages/user/History') },
       { path: 'favorites', component: () => import('pages/user/Favorites') },
-      { path: 'profile', component: () => import('pages/user/Profile') }
+      { path: 'profile', component: () => import('pages/user/Profile') },
+      { path: 'campaigns', component: () => import('pages/user/Campaigns') }
     ]
   },
   {

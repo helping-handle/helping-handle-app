@@ -4,31 +4,36 @@ module.exports = {
       id: 'u_1',
       name: 'Sonja Page',
       username: 'sonja',
-      email: 'spage@mba2018.hbs.edu'
+      email: 'spage@mba2018.hbs.edu',
+      type: 'donor'
     },
     {
       id: 'u_2',
       name: 'Karla Mendez',
       username: 'kmendez',
-      email: 'kmendez@mba2018.hbs.edu'
+      email: 'kmendez@mba2018.hbs.edu',
+      type: 'donor'
     },
     {
       id: 'u_3',
       name: 'Jason Nedell',
       username: 'nedell',
-      email: 'jason@pnc.one'
+      email: 'jason@pnc.one',
+      type: 'donor'
     },
     {
       id: 'u_4',
       name: 'Rickon Stark',
       username: 'shaggy',
-      email: 'rickon@north.com'
+      email: 'rickon@north.com',
+      type: 'recipient'
     },
     {
       id: 'u_5',
       name: 'Myrcella Baratheon',
       username: 'princess',
-      email: 'princess@theredkeep.gov'
+      email: 'princess@theredkeep.gov',
+      type: 'recipient'
     }
   ],
   campaigns: [
@@ -55,8 +60,9 @@ module.exports = {
       id: 'c_3',
       u_id: 'u_4',
       name: 'Christmas Present for Kids',
-      desc: 'My children need as many Bionicles as possible! Please help' +
+      desc: 'My children need as many Bionicles as possible! Please help ' +
             'me buy 10 of them so my son can unite them into the Toa Muta',
+      created: Date.now() - Math.floor(Math.random() * 1209600) + 302400,
       amount: 70,
       percent: 14,
       donors: 34
@@ -66,6 +72,7 @@ module.exports = {
       u_id: 'u_5',
       name: 'Bus Fare',
       desc: 'Looking to obtain bus fair for the month so I can commute to work',
+      created: Date.now() - Math.floor(Math.random() * 1209600) + 302400,
       amount: 70,
       percent: 0,
       donors: 0

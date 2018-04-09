@@ -1,20 +1,29 @@
-// import actions from './actions';
-// import getters from './getters';
-// import mutations from './mutations';
 import * as api from '../../api'
 
 const state = {
-  users: [],
-};
+  user: Object,
+}
+
+const getters = {
+  user: state => state.user
+}
 
 const actions = {
-  userExists ({commit}) {
-    api.userExists(user)
+  login ({commit}) {
+    if (api.userExists(user)) {
+    }
   })
-};
+}
+
+const mutations = {
+  login (state, user) {
+    state.user = user
+  }
+}
 
 export default {
   namespaced: true,
   state,
-  actions
+  actions,
+  mutations
 };
