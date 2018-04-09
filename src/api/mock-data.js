@@ -4,6 +4,7 @@ module.exports = {
       id: 'u_1',
       name: 'Sonja Page',
       username: 'sonja',
+      password: 'password',
       email: 'spage@mba2018.hbs.edu',
       type: 'donor'
     },
@@ -11,6 +12,7 @@ module.exports = {
       id: 'u_2',
       name: 'Karla Mendez',
       username: 'kmendez',
+      password: 'password',
       email: 'kmendez@mba2018.hbs.edu',
       type: 'donor'
     },
@@ -18,6 +20,7 @@ module.exports = {
       id: 'u_3',
       name: 'Jason Nedell',
       username: 'nedell',
+      password: 'password',
       email: 'jason@pnc.one',
       type: 'donor'
     },

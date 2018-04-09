@@ -38,7 +38,7 @@
               color="primary"
               icon="home"
               label="Login"
-              @click="$router.push('/dashboard')"
+              @click="login({username, password})"
             />
           </q-card-actions>
         </q-card>
@@ -48,6 +48,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'LoginPage',
   data () {
@@ -55,6 +57,11 @@ export default {
       username: '',
       password: ''
     }
+  },
+  methods: {
+    ...mapActions({
+      login: 'user/login'
+    })
   }
 }
 </script>
