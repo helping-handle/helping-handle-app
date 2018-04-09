@@ -22,6 +22,7 @@ module.exports = function (ctx) {
     build: {
       scopeHoisting: true,
       vueRouterMode: 'history',
+      publicPath: '/helping-handle-app/',
       // gzip: true,
       // analyze: true,
       // extractCSS: false,
