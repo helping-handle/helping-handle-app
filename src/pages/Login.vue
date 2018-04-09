@@ -29,7 +29,6 @@
           <q-card-actions class="justify-center">
             <q-btn
               push
-              color="deep-orange"
               label="Cancel"
               @click="$router.push('/')"
             />

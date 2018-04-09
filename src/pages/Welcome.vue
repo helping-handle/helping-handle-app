@@ -23,14 +23,21 @@
       <div class="row justify-center">
         <q-btn
           push
+          color="primary"
+          icon="mdi-magnify"
+          label="Explore Campaigns"
+          @click="$router.push('/explore')"
+        />
+        <q-btn
+          push
           color="secondary"
-          icon="accessibility"
-          label="sign Up"
+          icon="mdi-account"
+          label="Start a Goal"
           @click="$router.push('/signup')"
         />
         <q-btn
           push
-          color="primary"
+          color="deep-orange"
           icon="home"
           label="Login"
           @click="$router.push('/login')"

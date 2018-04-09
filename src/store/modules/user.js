@@ -8,7 +8,8 @@ const state = {
 const getters = {
   logged: state => Object.keys(state.user).length !== 0,
   color: state => (state.user.type === 'recipient') ? 'deep-purple-6'
-    : 'indigo-6'
+    : 'indigo-6',
+  type: state => state.user.type
 }
 
 const actions = {
@@ -16,8 +17,16 @@ const actions = {
     var user = api.login(payload.username, payload.password)
     if (user != null) {
       commit('setUser', user)
-      router.push('/dashboard')
+      router.push(
+        user.type === 'recipient'
+          ? '/user/campaigns'
+          : '/dashboard'
+      )
     }
+  },
+  logout ({commit, state}) {
+    commit('setUser', Object)
+    router.push('/welcome')
   }
 }
 

@@ -28,6 +28,7 @@ module.exports = {
       id: 'u_4',
       name: 'Rickon Stark',
       username: 'shaggy',
+      password: 'password',
       email: 'rickon@north.com',
       type: 'recipient'
     },
@@ -35,6 +36,7 @@ module.exports = {
       id: 'u_5',
       name: 'Myrcella Baratheon',
       username: 'princess',
+      password: 'password',
       email: 'princess@theredkeep.gov',
       type: 'recipient'
     }
