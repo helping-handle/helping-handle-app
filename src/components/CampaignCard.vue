@@ -5,6 +5,15 @@
       <span slot="subtitle">
         {{ desc }}
       </span>
+      <q-btn
+        rounded
+        v-if="showUser"
+        slot="right"
+        size="md"
+        icon="mdi-account"
+        :label="user.username"
+        @click="$router.push('/user/history')"
+      />
     </q-card-title>
     <q-card-main>
       <q-progress
@@ -25,17 +34,41 @@
           color="red"
           icon="favorite outline"
         />
-        <q-btn flat>Donate $1</q-btn>
-        <q-btn flat>Donate</q-btn>
+        <q-btn
+          flat
+          label="Donate $1"
+          @click="modalVisible = true"
+        />
+        <q-btn
+          flat
+          label="Donate"
+          @click="modalVisible = true"
+        />
         <q-btn flat>Share</q-btn>
       </q-card-actions>
+      <q-modal
+        minimized
+        v-model="modalVisible"
+        :content-css="{padding: '16px'}"
+        class="q-pa-md"
+      >
+        <div class="q-display-1 q-mb-md">Donate $1 to this user!</div>
+        <q-btn @click="modalVisible = false" label="Cancel" />
+        <q-btn color="primary" @click="modalVisible = false" label="Donate" />
+      </q-modal>
     </template>
   </q-card>
 </template>
 
 <script>
+
 export default {
   name: 'CampaignCard',
+  data () {
+    return {
+      modalVisible: false
+    }
+  },
   props: {
     owned: {
       type: Boolean,
@@ -49,6 +82,13 @@ export default {
       type: String,
       required: true
     },
+    user: {
+      type: Object
+    },
+    showUser: {
+      type: Boolean,
+      default: true
+    },
     percent: {
       type: Number,
       required: true
@@ -58,11 +98,16 @@ export default {
     }
   },
   computed: {
-    progressClass: function () {
+    progressClass: () => {
       return {
         'text-deep-purple-6': this.owned,
         'text-indigo-6': !this.owned
       }
+    }
+  },
+  methods: {
+    donateModal: (e) => {
+
     }
   }
 }

@@ -7,6 +7,7 @@
           :key="campaign.id"
           :name="campaign.name"
           :desc="campaign.desc"
+          :user="campaign.user"
           :percent="campaign.percent"
         >
         </CampaignCard>

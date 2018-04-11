@@ -3,7 +3,7 @@
     <div style="width: 800px; max-width: 90vw;">
       <div class="row justify-center">
         <q-card
-          color="indigo-6"
+          color="deep-purple-6"
           class="q-ma-sm"
         >
           <q-card-title class="text-center">
@@ -13,7 +13,7 @@
         </q-card>
 
         <q-card
-          color="indigo-6"
+          color="deep-purple-6"
           class="q-ma-sm"
         >
           <q-card-title class="text-center">
@@ -23,7 +23,7 @@
         </q-card>
 
         <q-card
-          color="indigo-6"
+          color="deep-purple-6"
           class="q-ma-sm"
         >
           <q-card-title class="text-center">
@@ -33,7 +33,7 @@
         </q-card>
 
         <q-card
-          color="indigo-6"
+          color="deep-purple-6"
           class="q-ma-sm"
         >
           <q-card-title class="text-center">
@@ -71,6 +71,7 @@
           :key="campaign.id"
           :name="campaign.name"
           :desc="campaign.desc"
+          :user="campaign.user"
           :percent="campaign.percent"
           :donors="campaign.donors"
           :owned="true"
@@ -83,10 +84,11 @@
 
 <script>
 import { mapGetters } from 'vuex'
+
 import CampaignCard from 'components/CampaignCard'
 
 export default {
-  name: 'CampaignssPage',
+  name: 'CampaignsPage',
   data () {
     return {
       createCampaignDialog: false,

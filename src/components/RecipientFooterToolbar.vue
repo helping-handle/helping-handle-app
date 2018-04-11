@@ -18,14 +18,14 @@
     <q-btn
       flat
       label="History"
-      icon="history"
-      @click="$router.push('/user/history')"
+      icon="mdi-currency-usd"
+      @click="$router.push('/user/donations')"
     />
     <q-btn
       flat
-      label="Favorites"
-      icon="favorite"
-      @click="$router.push('/user/favorites')"
+      label="Profile"
+      icon="settings"
+      @click="$router.push('/user/profile')"
     />
   </q-toolbar>
 </template>

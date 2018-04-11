@@ -28,7 +28,7 @@ var u3 = {
 var u4 = {
   id: 'u_4',
   name: 'Rickon Stark',
-  username: 'shaggy',
+  username: 'ricon',
   password: 'password',
   email: 'rickon@north.com',
   type: 'recipient'
@@ -54,7 +54,7 @@ module.exports = {
   campaigns: [
     {
       id: 'c_1',
-      u_id: 'u_4',
+      user: u4,
       name: 'Pay November Rent',
       desc: 'I need some help paying my rent for this month. All proceeds ' +
             'go directly to my landlord!',
@@ -64,7 +64,7 @@ module.exports = {
     },
     {
       id: 'c_2',
-      u_id: 'u_4',
+      user: u4,
       name: 'Buy Week\'s Groceries',
       desc: 'Items include eggs, milk, vegetables, and rice.',
       amount: 40,
@@ -73,7 +73,7 @@ module.exports = {
     },
     {
       id: 'c_3',
-      u_id: 'u_4',
+      user: u4,
       name: 'Christmas Present for Kids',
       desc: 'My children need as many Bionicles as possible! Please help ' +
             'me buy 10 of them so my son can unite them into the Toa Muta',
@@ -84,7 +84,7 @@ module.exports = {
     },
     {
       id: 'c_4',
-      u_id: 'u_5',
+      user: u5,
       name: 'Bus Fare',
       desc: 'Looking to obtain bus fair for the month so I can commute to work',
       created: Date.now() - Math.floor(Math.random() * 1209600) + 302400,
