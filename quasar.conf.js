@@ -1,8 +1,11 @@
-// Configuration for your app
+var path = require("path")
+
+function resolve (dir) {
+  return path.join(__dirname, dir)
+}
 
 module.exports = function (ctx) {
   return {
-    // app plugins (/src/plugins)
     plugins: [
       'axios'
     ],
@@ -27,6 +30,13 @@ module.exports = function (ctx) {
       // analyze: true,
       // extractCSS: false,
       // useNotifier: false,
+      env: ctx.dev
+      ? {
+        API: JSON.stringify('localhost:3000')
+      }
+      : { 
+        API: JSON.stringify('https://prod.com')
+      },
       extendWebpack (cfg) {
         cfg.module.rules.push({
           enforce: 'pre',
@@ -34,6 +44,12 @@ module.exports = function (ctx) {
           loader: 'eslint-loader',
           exclude: /(node_modules|quasar)/
         })
+
+        cfg.resolve.alias = {
+          ...cfg.resolve.alias,
+          '@': resolve('src'),
+          'store': resolve('src/store')
+        }
       }
     },
     devServer: {

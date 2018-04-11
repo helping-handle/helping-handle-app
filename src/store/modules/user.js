@@ -1,5 +1,5 @@
-import * as api from '../../api'
-import router from '../../router'
+import * as api from '@/api'
+import router from '@/router'
 
 const state = {
   user: Object

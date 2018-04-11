@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import campaigns from './modules/campaigns'
-import user from './modules/user'
+import campaigns from 'store/modules/campaigns'
+import user from 'store/modules/user'
 
 Vue.use(Vuex)
 
