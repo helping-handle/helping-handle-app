@@ -49,7 +49,7 @@
           :name="campaign.name"
           :desc="campaign.desc"
           :user="campaign.user"
-          :percent="campaign.percent"
+          :percent="50"
           :donors="campaign.donors"
         >
         </CampaignCard>

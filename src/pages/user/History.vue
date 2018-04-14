@@ -36,7 +36,7 @@
           :name="campaign.name"
           :desc="campaign.desc"
           :showUser="false"
-          :percent="campaign.percent"
+          :percent="50"
         >
         </CampaignCard>
       </div>
