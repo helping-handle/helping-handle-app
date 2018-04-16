@@ -58,7 +58,14 @@
           color="positive"
           icon="mdi-square-inc-cash"
           label="Square"
-          @click="donate()"
+          @click="donateCash()"
+        />
+        <q-btn
+          rounded
+          color="light-blue-4"
+          icon="mdi-venmo"
+          label="Venmo"
+          @click="donateVenmo()"
         />
         <q-btn
           flat
@@ -118,9 +125,18 @@ export default {
     }
   },
   methods: {
-    donate: function () {
+    donateCash: function () {
       var href = 'https://cash.me/$' + this.user.handle +
-                 '/' + this.$data.donateAmount
+                 '/' + this.donateAmount
+      window.open(href, '_blank')
+      this.donateModal = false
+    },
+    donateVenmo: function () {
+      var href = 'https://venmo.com/' +
+                 '/?txn=pay' +
+                 '&recipients=' + 'sibicle' +
+                 '&amount=' + this.donateAmount +
+                 '&note=Donation from Helping Handle!'
       window.open(href, '_blank')
       this.donateModal = false
     }
@@ -131,4 +147,6 @@ export default {
 <style scoped lang="stylus">
   .q-card
     width: 100%
+  .modal .q-btn
+    margin-right: 8px
 </style>
