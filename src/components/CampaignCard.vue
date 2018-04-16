@@ -11,7 +11,7 @@
         slot="right"
         size="md"
         icon="mdi-account"
-        :label="user.username"
+        :label="user.handle"
         @click="$router.push('/user/history')"
       />
     </q-card-title>
@@ -37,24 +37,34 @@
         <q-btn
           flat
           label="Donate $1"
-          @click="modalVisible = true"
+          @click="donateModal = true, donateAmount = 1"
         />
         <q-btn
           flat
           label="Donate"
-          @click="modalVisible = true"
+          @click="donateModal = true, donateAmount = 10"
         />
         <q-btn flat>Share</q-btn>
       </q-card-actions>
       <q-modal
-        minimized
-        v-model="modalVisible"
-        :content-css="{padding: '16px'}"
-        class="q-pa-md"
+        v-model="donateModal"
+        :content-css="{padding: '30px', minWidth: '50vw'}"
       >
-        <div class="q-display-1 q-mb-md">Donate $1 to this user!</div>
-        <q-btn @click="modalVisible = false" label="Cancel" />
-        <q-btn color="primary" @click="modalVisible = false" label="Donate" />
+        <div class="q-display-1 q-mb-md">
+          Donate ${{ donateAmount }} to @{{ user.handle }}
+        </div>
+        <q-btn
+          rounded
+          color="positive"
+          icon="mdi-square-inc-cash"
+          label="Square"
+          @click="donateModal = false"
+        />
+        <q-btn
+          flat
+          label="Cancel"
+          @click="donateModal = false"
+        />
       </q-modal>
     </template>
   </q-card>
@@ -66,7 +76,8 @@ export default {
   name: 'CampaignCard',
   data () {
     return {
-      modalVisible: false
+      donateModal: false,
+      donateAmount: 1
     }
   },
   props: {
@@ -103,11 +114,6 @@ export default {
         'text-deep-purple-6': this.owned,
         'text-indigo-6': !this.owned
       }
-    }
-  },
-  methods: {
-    donateModal: (e) => {
-
     }
   }
 }

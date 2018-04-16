@@ -1,12 +1,23 @@
 <template>
   <q-modal
+    padding
     v-if="visible"
     :content-css="{padding: '50px', minWidth: '50vw'}"
     class="q-pa-md"
   >
-    <div class="q-display-1 q-mb-md">Donate {{ amount }} to {{ username }}</div>
-    <q-btn @click="donateDialog = false" label="Cancel" />
-    <q-btn color="primary" @click="donateDialog = false" label="Donate" />
+    <div class="q-display-1 q-mb-md">
+      Donate {{ amount }} to {{ username }}
+    </div>
+    <q-btn
+      color="primary"
+      icon="square-inc-cash"
+      label="Donate with Square"
+      @click="donateDialog = false"
+    />
+    <q-btn
+      label="Cancel"
+      @click="donateDialog = false"
+    />
   </q-modal>
 </template>
 
