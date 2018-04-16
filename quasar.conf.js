@@ -32,7 +32,7 @@ module.exports = function (ctx) {
       // useNotifier: false,
       env: ctx.dev
       ? {
-        API: JSON.stringify('localhost:3000')
+        API: JSON.stringify('http://localhost:3000')
       }
       : { 
         API: JSON.stringify('https://prod.com')
