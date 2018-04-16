@@ -48,37 +48,47 @@
       </q-card-actions>
       <q-modal
         v-model="donateModal"
-        :content-css="{padding: '30px', minWidth: '50vw'}"
+         class="layout-padding qa-pa-sm"
       >
-        <div class="q-display-1 q-mb-md">
-          Donate ${{ donateAmount }} to @{{ user.handle }}
+        <h5 class="layout-padding">
+          Donate to @{{ user.handle }}
+        </h5>
+        <div class="layout-padding">
+          <q-field
+            icon="mdi-currency-usd"
+            helper="Donation amount"
+          >
+            <q-input v-model="donateAmount"/>
+          </q-field>
         </div>
-        <q-btn
-          rounded
-          color="positive"
-          icon="mdi-square-inc-cash"
-          label="Square"
-          @click="donateCash()"
-        />
-        <q-btn
-          rounded
-          color="light-blue-4"
-          icon="mdi-venmo"
-          label="Venmo"
-          @click="donateVenmo()"
-        />
-        <q-btn
-          rounded
-          color="blue-10"
-          icon="mdi-paypal"
-          label="PayPal"
-          @click="donatePayPal()"
-        />
-        <q-btn
-          flat
-          label="Cancel"
-          @click="donateModal = false"
-        />
+        <div class="layout-padding">
+          <q-btn
+            rounded
+            color="positive"
+            icon="mdi-square-inc-cash"
+            label="Square"
+            @click="donateCash()"
+          />
+          <q-btn
+            rounded
+            color="light-blue-4"
+            icon="mdi-venmo"
+            label="Venmo"
+            @click="donateVenmo()"
+          />
+          <q-btn
+            rounded
+            color="blue-10"
+            icon="mdi-paypal"
+            label="PayPal"
+            @click="donatePayPal()"
+          />
+          <q-btn
+            flat
+            label="Cancel"
+            @click="donateModal = false"
+          />
+        </div>
       </q-modal>
     </template>
   </q-card>
@@ -162,4 +172,6 @@ export default {
     width: 100%
   .modal .q-btn
     margin-right: 8px
+  h5
+    margin-bottom: 0
 </style>
