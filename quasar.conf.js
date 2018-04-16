@@ -34,8 +34,8 @@ module.exports = function (ctx) {
       ? {
         API: JSON.stringify('http://localhost:3000')
       }
-      : { 
-        API: JSON.stringify('https://prod.com')
+      : {
+        API: JSON.stringify('http://18.188.108.194')
       },
       extendWebpack (cfg) {
         cfg.module.rules.push({

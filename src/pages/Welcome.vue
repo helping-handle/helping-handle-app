@@ -1,5 +1,5 @@
 <template>
-  <q-page padding class="row justify-center">
+  <q-page class="row justify-center">
     <div style="width: 800px; max-width: 90vw;">
       <div class="row justify-center">
         <h2>Helping Handle</h2>
@@ -21,27 +21,68 @@
         </p>
       </div>
       <div class="row justify-center">
-        <q-btn
-          push
-          color="primary"
-          icon="mdi-magnify"
-          label="Explore Campaigns"
-          @click="$router.push('/explore')"
+        <q-tabs color="indigo-6" align="justify">
+        <q-tab
+          default
+          name="help"
+          slot="title"
+          icon="mdi-gift"
+          label="Help"
         />
-        <q-btn
-          push
-          color="secondary"
-          icon="mdi-account"
-          label="Start a Goal"
-          @click="$router.push('/signup')"
+        <q-tab
+          name="handle"
+          slot="title"
+          icon="mdi-leaf"
+          label="Handle"
         />
-        <q-btn
-          push
-          color="deep-orange"
-          icon="home"
-          label="Login"
-          @click="$router.push('/login')"
-        />
+        <q-tab-pane name="help">
+          <div class="row justify-center">
+            Help someone in need
+          </div>
+          <div class="row justify-center">
+            <q-btn
+              push
+              color="primary"
+              icon="mdi-view-list"
+              label="Explore Campaigns"
+              @click="$router.push('/explore')"
+            />
+          </div>
+          <div class="row justify-center">
+            <q-search
+              inverted
+              clearable
+              class="col"
+              icon="search"
+              color="indigo-4"
+              placeholder="Search username"
+              v-model="search"
+              @keyup.enter="$router.push('/user/campaigns')"
+             />
+          </div>
+        </q-tab-pane>
+        <q-tab-pane name="handle">
+          <div class="row justify-center">
+            Get a handle on your financial life
+          </div>
+          <div class="row justify-center">
+            <q-btn
+              push
+              color="secondary"
+              icon="mdi-account"
+              label="Start a Goal"
+              @click="$router.push('/signup')"
+            />
+            <q-btn
+              push
+              color="deep-orange"
+              icon="home"
+              label="Login"
+              @click="$router.push('/login')"
+            />
+          </div>
+        </q-tab-pane>
+      </q-tabs>
       </div>
     </div>
   </q-page>
@@ -49,14 +90,21 @@
 
 <script>
 export default {
-  name: 'WelcomePage'
+  name: 'WelcomePage',
+  data () {
+    return {
+      search: ''
+    }
+  }
 }
 </script>
 
 <style scoped lang="stylus">
   img
-    width: 256px
-    height: 256px
+    width: 128px
+    height: 128px
   .q-btn
     margin: 5px
+  .q-tab-pane
+    width: 600px
 </style>

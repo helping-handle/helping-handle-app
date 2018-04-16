@@ -1,7 +1,7 @@
 var u1 = {
   id: 'u_1',
   name: 'Sonja Page',
-  username: 'sonja',
+  handle: 'sonja',
   password: 'password',
   email: 'spage@mba2018.hbs.edu',
   type: 'donor'
@@ -10,7 +10,7 @@ var u1 = {
 var u2 = {
   id: 'u_2',
   name: 'Karla Mendez',
-  username: 'kmendez',
+  handle: 'kmendez',
   password: 'password',
   email: 'kmendez@mba2018.hbs.edu',
   type: 'donor'
@@ -19,7 +19,7 @@ var u2 = {
 var u3 = {
   id: 'u_3',
   name: 'Jason Nedell',
-  username: 'nedell',
+  handle: 'nedell',
   password: 'password',
   email: 'jason@pnc.one',
   type: 'donor'
@@ -28,7 +28,7 @@ var u3 = {
 var u4 = {
   id: 'u_4',
   name: 'Rickon Stark',
-  username: 'ricon',
+  handle: 'ricon',
   password: 'password',
   email: 'rickon@north.com',
   type: 'recipient'
@@ -37,7 +37,7 @@ var u4 = {
 var u5 = {
   id: 'u_5',
   name: 'Myrcella Baratheon',
-  username: 'princess',
+  handle: 'princess',
   password: 'password',
   email: 'princess@theredkeep.gov',
   type: 'recipient'

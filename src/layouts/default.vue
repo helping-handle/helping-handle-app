@@ -1,53 +1,107 @@
 <template>
   <q-layout view="lHh lpr lFf">
     <q-layout-header>
-      <q-toolbar
-        :color="userColor">
+      <q-toolbar :color="userColor">
         <q-toolbar-title>
           Helping Handle
         </q-toolbar-title>
-        <q-btn
-          v-if="userLogged"
-          flat
-          round
-          icon="settings"
-          @click="$router.push('/user/profile')"
-          aria-label="Settings"
-        />
-        <q-btn
-          v-if="userLogged"
-          flat
-          round
-          dense
-          icon="mdi-logout"
-          @click="logout"
-          aria-label="Logout"
-        />
-        <q-btn
-          v-if="!userLogged"
-          flat
-          icon="home"
-          @click="$router.push('/login')"
-          label="Login"
-        />
-        <q-btn
-          v-if="!userLogged"
-          flat
-          icon="mdi-account"
-          @click="$router.push('/signup')"
-          label="Sign Up"
-        />
+        <template v-if="userLogged">
+          <q-btn
+            flat
+            round
+            icon="settings"
+            aria-label="Settings"
+            @click="$router.push('/user/profile')"
+          />
+          <q-btn
+            flat
+            round
+            dense
+            icon="mdi-logout"
+            aria-label="Logout"
+            @click="logout"
+          />
+        </template>
+        <template v-else>
+          <q-btn
+            flat
+            icon="home"
+            label="Login"
+            @click="$router.push('/login')"
+          />
+          <q-btn
+            flat
+            icon="mdi-account"
+            label="Sign Up"
+            @click="$router.push('/signup')"
+          />
+        </template>
       </q-toolbar>
     </q-layout-header>
-
     <q-page-container>
       <router-view />
     </q-page-container>
     <q-layout-footer>
-      <DonorFooterToolbar v-if="userType == 'donor'">
-      </DonorFooterToolbar>
-      <RecipientFooterToolbar v-if="userType == 'recipient'">
-      </RecipientFooterToolbar>
+      <q-toolbar
+        color="indigo-6"
+        class="justify-center"
+        v-if="userType == 'donor'"
+      >
+        <q-btn
+          flat
+          label="Dashboard"
+          icon="home"
+          @click="$router.push('/dashboard')"
+        />
+        <q-btn
+          flat
+          label="Explore"
+          icon="search"
+          @click="$router.push('/explore')"
+        />
+        <q-btn
+          flat
+          label="History"
+          icon="history"
+          @click="$router.push('/user/history')"
+        />
+        <q-btn
+          flat
+          label="Favorites"
+          icon="favorite"
+          @click="$router.push('/user/favorites')"
+        />
+      </q-toolbar>
+      <q-toolbar
+        color="deep-purple-6"
+        class="justify-center"
+        v-if="userType == 'recipient'"
+      >
+        <q-btn
+          flat
+          label="Campaigns"
+          icon="mdi-gift"
+          @click="$router.push('/user/campaigns')"
+        />
+        <q-btn
+          flat
+          label="Resources"
+          icon="domain"
+          @click="$router.push('/resources')"
+        />
+        <q-btn
+          flat
+          label="History"
+          icon="mdi-currency-usd"
+          @click="$router.push('/user/donations')"
+        />
+        <q-btn
+          flat
+          label="Profile"
+          icon="settings"
+          @click="$router.push('/user/profile')"
+        />
+      </q-toolbar>
     </q-layout-footer>
   </q-layout>
 </template>
@@ -55,15 +109,8 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 
-import DonorFooterToolbar from 'components/DonorFooterToolbar'
-import RecipientFooterToolbar from 'components/RecipientFooterToolbar'
-
 export default {
   name: 'DefaultLayout',
-  components: {
-    DonorFooterToolbar,
-    RecipientFooterToolbar
-  },
   computed: {
     ...mapGetters({
       userLogged: 'user/logged',

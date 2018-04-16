@@ -7,7 +7,7 @@
       </span>
       <q-btn
         rounded
-        v-if="showUser"
+        v-if="showUser && owned == false"
         slot="right"
         size="md"
         icon="mdi-account"
@@ -66,6 +66,13 @@
           icon="mdi-venmo"
           label="Venmo"
           @click="donateVenmo()"
+        />
+        <q-btn
+          rounded
+          color="blue-10"
+          icon="mdi-paypal"
+          label="PayPal"
+          @click="donatePayPal()"
         />
         <q-btn
           flat
@@ -134,9 +141,15 @@ export default {
     donateVenmo: function () {
       var href = 'https://venmo.com/' +
                  '/?txn=pay' +
-                 '&recipients=' + 'sibicle' +
+                 '&recipients=' + this.user.handle +
                  '&amount=' + this.donateAmount +
                  '&note=Donation from Helping Handle!'
+      window.open(href, '_blank')
+      this.donateModal = false
+    },
+    donatePayPal: function () {
+      var href = 'https://paypal.me/' + this.user.handle +
+                 '/' + this.donateAmount
       window.open(href, '_blank')
       this.donateModal = false
     }

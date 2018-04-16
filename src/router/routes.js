@@ -2,18 +2,12 @@
 export default [
   {
     path: '/',
-    component: () => import('layouts/Login'),
+    component: () => import('layouts/Default'),
     children: [
       { path: '', component: () => import('pages/Welcome') },
       { path: 'welcome', component: () => import('pages/Welcome') },
       { path: 'login', component: () => import('pages/Login') },
-      { path: 'signup', component: () => import('pages/SignUp') }
-    ]
-  },
-  {
-    path: '/',
-    component: () => import('layouts/Default'),
-    children: [
+      { path: 'signup', component: () => import('pages/SignUp') },
       { path: 'dashboard', component: () => import('pages/Dashboard') },
       { path: 'explore', component: () => import('pages/Explore') }
     ]

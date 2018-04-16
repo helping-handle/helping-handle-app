@@ -53,8 +53,16 @@
         class="q-pa-md"
       >
         <div class="q-display-1 q-mb-md">Create New Campaign</div>
-        <q-input v-model="campaignName" float-label="Campaign Name" class="q-mb-md"/>
-        <q-input v-model="campaignAmount" float-label="Funding Amount" class="q-mb-md"/>
+        <q-input
+          v-model="campaignName"
+          float-label="Campaign Name"
+          class="q-mb-md"
+        />
+        <q-input
+          v-model="campaignAmount"
+          float-label="Funding Amount"
+          class="q-mb-md"
+        />
         <p class="caption">Description</p>
         <q-editor
           v-model="campaignDesc"
