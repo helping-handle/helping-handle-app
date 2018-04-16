@@ -58,7 +58,7 @@
           color="positive"
           icon="mdi-square-inc-cash"
           label="Square"
-          @click="donateModal = false"
+          @click="donate()"
         />
         <q-btn
           flat
@@ -77,7 +77,8 @@ export default {
   data () {
     return {
       donateModal: false,
-      donateAmount: 1
+      donateAmount: 1,
+      confirmModal: false
     }
   },
   props: {
@@ -114,6 +115,14 @@ export default {
         'text-deep-purple-6': this.owned,
         'text-indigo-6': !this.owned
       }
+    }
+  },
+  methods: {
+    donate: function () {
+      var href = 'https://cash.me/$' + this.user.handle +
+                 '/' + this.$data.donateAmount
+      window.open(href, '_blank')
+      this.donateModal = false
     }
   }
 }
