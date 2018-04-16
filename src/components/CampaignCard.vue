@@ -8,6 +8,7 @@
       <q-btn
         rounded
         v-if="showUser && owned == false"
+        color="indigo-6"
         slot="right"
         size="md"
         icon="mdi-account"
@@ -90,6 +91,34 @@
           />
         </div>
       </q-modal>
+    <q-modal
+        v-model="confirmModal"
+         class="layout-padding qa-pa-sm"
+      >
+        <h5 class="layout-padding">
+          Was the donation to @{{ user.handle }} successful?
+        </h5>
+        <div class="layout-padding">
+          <q-field
+            icon="mdi-currency-usd"
+            helper="Actual donation amount"
+          >
+            <q-input v-model="donateAmount"/>
+          </q-field>
+        </div>
+        <div class="layout-padding">
+          <q-btn
+            color="positive"
+            label="Successful"
+            @click="confirmModal = false"
+          />
+          <q-btn
+            color="negative"
+            label="Unsuccessful"
+            @click="confirmModal = false"
+          />
+        </div>
+      </q-modal>
     </template>
   </q-card>
 </template>
@@ -147,6 +176,7 @@ export default {
                  '/' + this.donateAmount
       window.open(href, '_blank')
       this.donateModal = false
+      this.confirmModal = true
     },
     donateVenmo: function () {
       var href = 'https://venmo.com/' +
@@ -156,12 +186,17 @@ export default {
                  '&note=Donation from Helping Handle!'
       window.open(href, '_blank')
       this.donateModal = false
+      this.confirmModal = true
     },
     donatePayPal: function () {
       var href = 'https://paypal.me/' + this.user.handle +
                  '/' + this.donateAmount
       window.open(href, '_blank')
       this.donateModal = false
+      this.confirmModal = true
+    },
+    err: function () {
+      this.$q.notify('Hello')
     }
   }
 }
