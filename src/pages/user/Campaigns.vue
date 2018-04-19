@@ -77,11 +77,7 @@
         <CampaignCard
           v-for="campaign in campaigns"
           :key="campaign.id"
-          :name="campaign.name"
-          :desc="campaign.desc"
-          :user="campaign.user"
-          :percent="50"
-          :donors="13"
+          :campaign="campaign"
           :owned="true"
         >
         </CampaignCard>

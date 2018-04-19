@@ -33,11 +33,8 @@
         <CampaignCard
           v-for="campaign in campaigns"
           :key="campaign.id"
-          :name="campaign.name"
-          :desc="campaign.desc"
-          :user="campaign.user"
+          :campaign="campaign"
           :showUser="false"
-          :percent="50"
         >
         </CampaignCard>
       </div>

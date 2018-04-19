@@ -1,9 +1,9 @@
 <template>
   <q-card class="q-ma-sm">
     <q-card-title>
-      {{ name }}
+      {{ campaign.name }}
       <span slot="subtitle">
-        {{ desc }}
+        {{ campaign.desc }}
       </span>
       <q-btn
         rounded
@@ -12,28 +12,38 @@
         slot="right"
         size="md"
         icon="mdi-account"
-        :label="user.handle"
+        :label="campaign.user.handle"
         @click="$router.push('/user/history')"
       />
     </q-card-title>
     <q-card-main>
       <q-progress
-        :percentage="percent"
+        :percentage="campaign.percent"
         v-bind:class="progressClass"
         style="height: 12px"
       />
     </q-card-main>
     <q-card-main v-if="owned">
-      Donors: {{ donors }}
+      Donors: {{ campaign.donors }}
     </q-card-main>
     <template v-if="!owned">
       <q-card-separator />
       <q-card-actions>
         <q-btn
+          v-if="!campaign.fav"
           flat
           round
           color="red"
           icon="favorite outline"
+          @click="campaign.fav = true"
+        />
+        <q-btn
+          v-if="campaign.fav"
+          flat
+          round
+          color="red"
+          icon="favorite"
+          @click="campaign.fav = false"
         />
         <q-btn
           flat
@@ -52,7 +62,7 @@
          class="layout-padding qa-pa-sm"
       >
         <h5 class="layout-padding">
-          Donate to @{{ user.handle }}
+          Donate to @{{ campaign.user.handle }}
         </h5>
         <div class="layout-padding">
           <q-field
@@ -96,7 +106,7 @@
          class="layout-padding qa-pa-sm"
       >
         <h5 class="layout-padding">
-          Was the donation to @{{ user.handle }} successful?
+          Was the donation to @{{ campaign.user.handle }} successful?
         </h5>
         <div class="layout-padding">
           <q-field
@@ -135,31 +145,14 @@ export default {
     }
   },
   props: {
-    owned: {
-      type: Boolean,
-      default: false
-    },
-    name: {
-      type: String,
-      required: true
-    },
-    desc: {
-      type: String,
-      required: true
-    },
-    user: {
-      type: Object
-    },
+    campaign: Object,
     showUser: {
       type: Boolean,
       default: true
     },
-    percent: {
-      type: Number,
-      required: true
-    },
-    donors: {
-      type: Number
+    owned: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -172,7 +165,7 @@ export default {
   },
   methods: {
     donateCash: function () {
-      var href = 'https://cash.me/$' + this.user.handle +
+      var href = 'https://cash.me/$' + this.campaign.user.handle +
                  '/' + this.donateAmount
       window.open(href, '_blank')
       this.donateModal = false
@@ -181,7 +174,7 @@ export default {
     donateVenmo: function () {
       var href = 'https://venmo.com/' +
                  '/?txn=pay' +
-                 '&recipients=' + this.user.handle +
+                 '&recipients=' + this.campaign.user.handle +
                  '&amount=' + this.donateAmount +
                  '&note=Donation from Helping Handle!'
       window.open(href, '_blank')
@@ -189,7 +182,7 @@ export default {
       this.confirmModal = true
     },
     donatePayPal: function () {
-      var href = 'https://paypal.me/' + this.user.handle +
+      var href = 'https://paypal.me/' + this.campaign.user.handle +
                  '/' + this.donateAmount
       window.open(href, '_blank')
       this.donateModal = false
