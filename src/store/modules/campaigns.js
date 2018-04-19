@@ -1,4 +1,4 @@
-import Vue from 'vue'
+// ////////////// import Vue from 'vue'
 
 const state = {
   campaigns: []
@@ -10,9 +10,12 @@ const getters = {
 
 const actions = {
   getAll ({ commit }) {
+    /*
     Vue.prototype.$axios.get('goals').then(r => {
       commit('set', r.data)
     })
+    */
+    commit('set', {})
   }
 }
 

@@ -45,7 +45,7 @@
       <q-toolbar
         color="indigo-6"
         class="justify-center"
-        v-if="userType == 'donor'"
+        v-if="userRole == 'donor'"
       >
         <q-btn
           flat
@@ -75,7 +75,7 @@
       <q-toolbar
         color="deep-purple-6"
         class="justify-center"
-        v-if="userType == 'recipient'"
+        v-if="userRole == 'recipient'"
       >
         <q-btn
           flat
@@ -94,8 +94,7 @@
           label="History"
           icon="mdi-currency-usd"
           @click="$router.push('/user/donations')"
-        />
-        <q-btn
+        />        <q-btn
           flat
           label="Profile"
           icon="settings"
@@ -115,7 +114,7 @@ export default {
     ...mapGetters({
       userLogged: 'user/logged',
       userColor: 'user/color',
-      userType: 'user/type'
+      userRole: 'user/role'
     })
   },
   methods: {

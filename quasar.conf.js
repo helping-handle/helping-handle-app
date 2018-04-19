@@ -8,7 +8,6 @@ module.exports = function (ctx) {
   return {
     plugins: [
       'axios',
-      'vueAuth'
     ],
     css: [
       'app.styl'
@@ -33,7 +32,7 @@ module.exports = function (ctx) {
       // useNotifier: false,
       env: ctx.dev
       ? {
-        API: JSON.stringify('http://localhost:3000')
+        API: JSON.stringify('http://192.168.1.123:3000')
       }
       : {
         API: JSON.stringify('http://18.188.108.194')

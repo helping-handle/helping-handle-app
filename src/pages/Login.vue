@@ -16,14 +16,14 @@
           <q-card-separator />
           <q-card-main>
             <q-input
-              v-model="username"
+              v-model="form.email"
               float-label="Username / Email Address"
             />
             <q-input
-              v-model="password"
+              v-model="form.password"
               type="password"
               float-label="Password"
-              @keyup.enter="login({username, password})"
+              @keyup.enter="login()"
             />
           </q-card-main>
           <q-card-separator />
@@ -38,7 +38,7 @@
               color="primary"
               icon="home"
               label="Login"
-              @click="login({username, password})"
+              @click="login()"
             />
           </q-card-actions>
         </q-card>
@@ -54,14 +54,29 @@ export default {
   name: 'LoginPage',
   data () {
     return {
-      username: '',
-      password: ''
+      form: {
+        email: '',
+        password: ''
+      }
     }
   },
   methods: {
     ...mapActions({
-      login: 'user/login'
-    })
+      setUser: 'user/setUser'
+    }),
+    login () {
+      this.$authResource.post('/auth/sign_in', {user: this.form}).then(response => {
+        this.$q.sessionStorage.set('token', response.data.token)
+
+        this.setUser(response.data.user)
+
+        this.$router.push(
+          response.data.user.role === 'recipient'
+            ? '/user/campaigns'
+            : '/dashboard'
+        )
+      })
+    }
   }
 }
 </script>

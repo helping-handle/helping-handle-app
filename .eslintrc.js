@@ -32,6 +32,8 @@ module.exports = {
     'arrow-parens': 0,
     'one-var': 0,
 
+    'no-multi-spaces': 0,
+
     'import/first': 0,
     'import/named': 2,
     'import/namespace': 2,

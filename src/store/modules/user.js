@@ -1,5 +1,5 @@
-import * as api from '@/api'
 import router from '@/router'
+import { SessionStorage } from 'quasar'
 
 const state = {
   user: Object
@@ -7,26 +7,19 @@ const state = {
 
 const getters = {
   logged: state => Object.keys(state.user).length !== 0,
-  color: state => (state.user.type === 'recipient') ? 'deep-purple-6'
+  color: state => (state.user.role === 'recipient') ? 'deep-purple-6'
     : 'indigo-6',
-  type: state => state.user.type
+  role: state => state.user.role
 }
 
 const actions = {
-  login ({commit, state}, payload) {
-    var user = api.login(payload.username, payload.password)
-    if (user != null) {
-      commit('setUser', user)
-      router.push(
-        user.type === 'recipient'
-          ? '/user/campaigns'
-          : '/dashboard'
-      )
-    }
-  },
   logout ({commit, state}) {
+    SessionStorage.set('token', '')
     commit('setUser', Object)
     router.push('/welcome')
+  },
+  setUser ({commit, state}, user) {
+    commit('setUser', user)
   }
 }
 
