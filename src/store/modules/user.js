@@ -7,9 +7,13 @@ const state = {
 
 const getters = {
   logged: state => Object.keys(state.user).length !== 0,
-  color: state => (state.user.role === 'recipient') ? 'deep-purple-6'
-    : 'indigo-6',
-  role: state => state.user.role
+  role: state => state.user.role,
+  color (state) {
+    if (state.user.role === 'recipient') return 'deep-purple-6'
+    if (state.user.role === 'donor')     return 'indigo-6'
+    if (state.user.role === 'admin')     return 'green-6'
+    else                                 return 'light-blue-6'
+  }
 }
 
 const actions = {
