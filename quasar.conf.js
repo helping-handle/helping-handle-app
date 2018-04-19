@@ -7,7 +7,8 @@ function resolve (dir) {
 module.exports = function (ctx) {
   return {
     plugins: [
-      'axios'
+      'axios',
+      'vueAuth'
     ],
     css: [
       'app.styl'

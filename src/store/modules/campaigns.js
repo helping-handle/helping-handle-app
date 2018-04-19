@@ -1,4 +1,4 @@
-import * as api from '@/api'
+import Vue from 'vue'
 
 const state = {
   campaigns: []
@@ -10,8 +10,8 @@ const getters = {
 
 const actions = {
   getAll ({ commit }) {
-    api.getAllCampaigns(campaigns => {
-      commit('set', campaigns)
+    Vue.prototype.$axios.get('goals').then(r => {
+      commit('set', r.data)
     })
   }
 }
