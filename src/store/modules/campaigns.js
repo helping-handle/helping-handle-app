@@ -1,4 +1,4 @@
-// ////////////// import Vue from 'vue'
+import { apiResource } from 'plugins/axios'
 
 const state = {
   campaigns: []
@@ -10,12 +10,11 @@ const getters = {
 
 const actions = {
   getAll ({ commit }) {
-    /*
-    Vue.prototype.$axios.get('goals').then(r => {
-      commit('set', r.data)
-    })
-    */
-    commit('set', {})
+    apiResource
+      .get('/goals')
+      .then(response => {
+        commit('set', response.data)
+      })
   }
 }
 
