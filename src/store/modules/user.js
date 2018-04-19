@@ -16,7 +16,7 @@ const actions = {
   logout ({commit, state}) {
     SessionStorage.set('token', '')
     commit('setUser', Object)
-    router.push('/welcome')
+    router.push('/login')
   },
   setUser ({commit, state}, user) {
     commit('setUser', user)
