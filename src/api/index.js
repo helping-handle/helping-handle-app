@@ -4,13 +4,6 @@ import axios from 'axios'
 
 const API = process.env.API
 
-// export const authResource = axios.create({
-//   baseURL: `${API}/oauth/`,
-//   transformRequest(data) {
-//     return querystring.stringify(data)
-//   },
-// })
-
 export const apiResource = axios.create({
   baseURL: `${API}/`,
   headers: {
@@ -34,12 +27,12 @@ export function getAllCampaigns (cb) {
     })
 }
 
-export function login (username, password) {
+export function login (handle, password) {
   return _users.filter((e) => {
-    var validUsername = e.username === username
-    var validEmail = e.email === username
+    var validHandle = e.handle === handle
+    var validEmail = e.email === handle
     var validPassword = e.password === password
 
-    return (validUsername || validEmail) && validPassword
+    return (validHandle || validEmail) && validPassword
   })[0]
 }
