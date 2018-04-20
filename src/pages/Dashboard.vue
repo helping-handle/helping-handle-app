@@ -14,7 +14,7 @@
           class="q-ma-sm"
         >
           <q-card-title class="text-center">
-            <h4 class="q-ma-sm">$345</h4>
+            <h4 class="q-ma-sm">{{ userTotalDonated }}</h4>
             <span slot="subtitle">Money Donated</span>
           </q-card-title>
         </q-card>
@@ -23,7 +23,7 @@
           class="q-ma-sm"
         >
           <q-card-title class="text-center">
-            <h4 class="q-ma-sm">15</h4>
+            <h4 class="q-ma-sm">{{ userTotalGoals }}</h4>
             <span slot="subtitle">Goals Supported</span>
           </q-card-title>
         </q-card>
@@ -32,7 +32,7 @@
           class="q-ma-sm"
         >
           <q-card-title class="text-center">
-            <h4 class="q-ma-sm">34</h4>
+            <h4 class="q-ma-sm">{{ userTotalUsers }}</h4>
             <span slot="subtitle">People Helped</span>
           </q-card-title>
         </q-card>
@@ -60,8 +60,12 @@ export default {
     CampaignCard
   },
   computed: mapGetters({
-    campaigns: 'campaigns/all'
+    campaigns: 'campaigns/all',
+    userTotalDonated: 'user/total_donated',
+    userTotalGoals: 'user/goals_supported',
+    userTotalUsers: 'user/total_users'
   }),
+
   created () {
     this.$store.dispatch('campaigns/getAll')
   }

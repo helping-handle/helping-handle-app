@@ -13,7 +13,10 @@ const getters = {
     if (state.user.role === 'donor')     return 'indigo-6'
     if (state.user.role === 'admin')     return 'green-6'
     else                                 return 'light-blue-6'
-  }
+  },
+  total_donated: state => state.user.total_donated,
+  goals_supported: state => state.user.goals_supported,
+  total_users: state => state.user.total_users
 }
 
 const actions = {
