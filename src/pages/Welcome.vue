@@ -51,16 +51,16 @@
                       color="indigo-8"
                       placeholder="Search Username"
                       v-model="search"
-                      @keyup.enter="$router.push('/user/campaigns')"
+                      @keyup.enter="goProfile()"
                     />
                   </div>
                   <div class="col-sm-12 col-md-3 q-ma-none q-pa-none">
                     <q-btn
                       class="full-width"
-                      color="indigo-6"
+                      color="indigo-7"
                       icon-right="mdi-arrow-right-box"
                       label="Donate"
-                      @click="$router.push('/explore')"
+                      @click="goProfile()"
                     />
                   </div>
                   <div class="col-sm-12 col-md-3 q-ma-none q-pa-none">
@@ -110,6 +110,21 @@ export default {
   data () {
     return {
       search: ''
+    }
+  },
+  methods: {
+    goProfile: function () {
+      if (this.search.length < 2) {
+        this.$q.notify({
+          color: 'info',
+          position: 'bottom',
+          message: 'Please enter more than two characters',
+          icon: 'keyboard',
+          timeout: 500
+        })
+      } else {
+        this.$store.dispatch('profile/navigateTo', this.search)
+      }
     }
   }
 }

@@ -73,7 +73,7 @@ export default {
       profile: 'profile/profile',
       goals: 'profile/goals'
     }),
-    profileinterests: function () {
+    profileInterests: function () {
       return this.profile.interests.split(', ')
     },
     profileGoals: function () {
@@ -85,7 +85,7 @@ export default {
   },
   created () {
     this.$store.dispatch(
-      'profile/loadProfile',
+      'profile/load',
       this.$route.params.id
     )
   }

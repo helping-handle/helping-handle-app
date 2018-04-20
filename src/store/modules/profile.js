@@ -1,4 +1,6 @@
 import { apiResource } from 'plugins/axios'
+import { Notify } from 'quasar'
+import router from '@/router'
 
 const state = {
   profile: Object,
@@ -11,7 +13,7 @@ const getters = {
 }
 
 const actions = {
-  loadProfile ({commit, state}, userId) {
+  load ({commit, state}, userId) {
     apiResource
       .get('/users/' + userId)
       .then(response => {
@@ -21,6 +23,23 @@ const actions = {
       .get('/users/' + userId + '/goals')
       .then(response => {
         commit('setGoals', response.data)
+      })
+  },
+  navigateTo ({commit, state}, user) {
+    apiResource
+      .get('/users/?q=' + user)
+      .then(response => {
+        if (user.length < 3  || response.data.length > 0) {
+          router.push('/profile/' + response.data[0].id)
+        } else {
+          Notify.create({
+            color: 'warning',
+            position: 'bottom',
+            message: 'Unable to find User',
+            icon: 'mdi-comment-question-outline',
+            timeout: 500
+          })
+        }
       })
   }
 }
