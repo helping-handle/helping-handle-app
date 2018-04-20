@@ -24,7 +24,7 @@
                 <q-chips-input
                   color="deep-purple-6"
                   readonly
-                  v-model="profileinterests"
+                  v-model="profileInterests"
                 />
               </dd>
               <dt>Goals</dt>
