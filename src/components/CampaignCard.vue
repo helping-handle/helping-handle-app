@@ -30,20 +30,12 @@
       <q-card-separator />
       <q-card-actions>
         <q-btn
-          v-if="!campaign.fav"
+          v-if="userLogged"
           flat
           round
           color="red"
-          icon="favorite outline"
-          @click="campaign.fav = true"
-        />
-        <q-btn
-          v-if="campaign.fav"
-          flat
-          round
-          color="red"
-          icon="favorite"
-          @click="campaign.fav = false"
+          :icon="heartIcon"
+          @click="toggleFav()"
         />
         <q-btn
           flat
@@ -137,6 +129,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import { apiResource } from 'plugins/axios'
 
 export default {
   name: 'CampaignCard',
@@ -159,6 +153,13 @@ export default {
     }
   },
   computed: {
+    ...mapGetters({
+      userLogged: 'user/logged'
+    }),
+    heartIcon: function () {
+      var fav = this.userLogged && this.campaign.favorited
+      return fav ? 'favorite' : 'favorite outline'
+    },
     progressClass: () => {
       return {
         'text-deep-purple-6': this.owned,
@@ -191,8 +192,10 @@ export default {
       this.donateModal = false
       this.confirmModal = true
     },
-    err: function () {
-      this.$q.notify('Hello')
+    toggleFav: function () {
+      apiResource
+        .patch('/goals/' + this.campaign.id + '/toggle_favorite')
+        .then(this.campaign.favorited = !this.campaign.favorited)
     }
   }
 }

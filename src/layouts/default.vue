@@ -110,21 +110,21 @@
         >
           <q-btn
             flat
-            label="Campaigns"
-            icon="mdi-gift"
-            @click="$router.push('/user/campaigns')"
+            label="Dashboard"
+            icon="mdi-home"
+            @click="$router.push('/dashboard')"
           />
           <q-btn
             flat
             label="Resources"
-            icon="domain"
-            @click="$router.push('/resources')"
+            icon="favorite"
+            @click="$router.push('/favorites')"
           />
           <q-btn
             flat
             label="History"
             icon="mdi-currency-usd"
-            @click="$router.push('/user/donations')"
+            @click="$router.push('/history')"
           />
           <q-btn
             flat

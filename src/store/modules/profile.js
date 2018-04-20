@@ -11,7 +11,7 @@ const getters = {
 }
 
 const actions = {
-  loadProfile ({commit, state}, userId)  {
+  loadProfile ({commit, state}, userId) {
     apiResource
       .get('/users/' + userId)
       .then(response => {
