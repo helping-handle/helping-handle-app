@@ -18,7 +18,7 @@
     </q-card-title>
     <q-card-main>
       <q-progress
-        :percentage="campaign.percent"
+        :percentage="campaign.amount_percent"
         v-bind:class="progressClass"
         style="height: 12px"
       />
@@ -79,6 +79,7 @@
             icon="mdi-square-inc-cash"
             label="Square"
             @click="donateCash()"
+            v-if="campaign.user.handle_cash != null"
           />
           <q-btn
             rounded
@@ -86,6 +87,7 @@
             icon="mdi-venmo"
             label="Venmo"
             @click="donateVenmo()"
+            v-if="campaign.user.handle_venmo != null"
           />
           <q-btn
             rounded
@@ -93,6 +95,7 @@
             icon="mdi-paypal"
             label="PayPal"
             @click="donatePayPal()"
+            v-if="campaign.user.handle_paypal != null"
           />
           <q-btn
             flat

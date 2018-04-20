@@ -28,8 +28,16 @@ export default [
         beforeEnter: Guard.auth
       },
       {
+        path: 'profile/:id',
+        component: () => import('pages/Profile')
+      },
+      {
         path: 'resources',
         component: () => import('pages/Resources')
+      },
+      {
+        path: 'explore',
+        component: () => import('pages/Explore')
       }
     ]
   },

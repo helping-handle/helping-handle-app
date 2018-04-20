@@ -21,13 +21,18 @@
       <q-card-main>
         <p>{{ res.name }}</p>
         <p class="text-faded">
-          {{ res.desc }}
+          {{ res.slug }}
         </p>
       </q-card-main>
       <q-card-separator />
       <q-card-actions>
         <q-btn flat color="deep-purple-6">Learn More</q-btn>
-        <q-btn flat>Contact</q-btn>
+        <q-btn
+          flat
+          :href="`mailto:${res.email}`"
+        >
+          Contact
+        </q-btn>
       </q-card-actions>
   </q-card>
 </template>
