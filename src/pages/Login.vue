@@ -1,47 +1,63 @@
 <template>
-  <q-page padding class="row justify-center">
-    <div style="width: 800px; max-width: 90vw;">
-      <div class="row justify-center">
-        <img
-          alt="Helping Handle logo"
-          src="~assets/logo-full.svg"
-        >
-        <h2>Helping Handle</h2>
-      </div>
-      <div class="row justify-center">
-        <q-card class="q-ma-sm">
-          <q-card-title>
-            Login
-          </q-card-title>
-          <q-card-separator />
-          <q-card-main>
-            <q-input
-              v-model="form.email"
-              float-label="Username / Email Address"
+  <q-page>
+    <div class="row justify-center">
+      <div class="container q-mt-md">
+        <div class="row justify-center">
+          <div class="col-12">
+            <h3 class="q-my-lg text-center">
+              Helping Handle
+            </h3>
+          </div>
+          <div class="col-12 text-center">
+            <img
+              alt="Helping Handle logo"
+              src="assets/logo-full.svg"
             />
-            <q-input
-              v-model="form.password"
-              type="password"
-              float-label="Password"
-              @keyup.enter="login()"
-            />
-          </q-card-main>
-          <q-card-separator />
-          <q-card-actions class="justify-center">
-            <q-btn
-              push
-              label="Cancel"
-              @click="$router.push('/')"
-            />
-            <q-btn
-              push
-              color="primary"
-              icon="home"
-              label="Login"
-              @click="login()"
-            />
-          </q-card-actions>
-        </q-card>
+          </div>
+          <div class="col-12 q-mt-md">
+            <q-card class="q-ma-sm">
+              <q-card-title class="text-center">
+                Login
+              </q-card-title>
+              <q-card-separator />
+              <q-card-main>
+                <q-input
+                  v-model="form.email"
+                  float-label="Username / Email Address"
+                  class="q-mb-lg"
+                />
+                <q-input
+                  v-model="form.password"
+                  type="password"
+                  float-label="Password"
+                  @keyup.enter="login()"
+                  class="q-mb-md"
+                />
+              </q-card-main>
+              <q-card-separator />
+              <q-card-actions>
+                <div class="actions row q-ma-sm">
+                  <div class="col-sm-12 col-md-6 q-ma-none q-pa-none">
+                    <q-btn
+                      class="full-width"
+                      color="indigo-3"
+                      label="Cancel"
+                      @click="$router.push('/')"
+                    />
+                  </div>
+                  <div class="col-sm-12 col-md-6 q-ma-none q-pa-none">
+                    <q-btn
+                      class="full-width"
+                      color="indigo-8"
+                      label="Login"
+                      @click="login()"
+                    />
+                  </div>
+                </div>
+              </q-card-actions>
+            </q-card>
+          </div>
+        </div>
       </div>
     </div>
   </q-page>
@@ -82,13 +98,20 @@ export default {
 </script>
 
 <style scoped lang="stylus">
+  .container
+    width 400px
+    max-width 100vw
+
   img
-    width: 128px
-    height: 128px
+    width 100px
+    height 100px
+
+  .q-btn-group
+    width 100%
+
   .q-btn
-    margin: 5px
-  .q-card
-    width: 400px;
-  .q-input
-    margin-bottom 16px
+    padding 10.5px
+
+  div.actions
+    width 100%
 </style>

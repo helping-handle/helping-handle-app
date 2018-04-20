@@ -50,6 +50,7 @@
         >
           <q-btn
             flat
+            default
             label="Dashboard"
             icon="home"
             @click="$router.push('/dashboard')"
@@ -80,6 +81,7 @@
         >
           <q-btn
             flat
+            default
             label="Campaigns"
             icon="mdi-gift"
             @click="$router.push('/user/campaigns')"
@@ -110,6 +112,7 @@
         >
           <q-btn
             flat
+            default
             label="Dashboard"
             icon="mdi-home"
             @click="$router.push('/dashboard')"

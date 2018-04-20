@@ -12,7 +12,7 @@
           <q-card-title>
             {{ profile.name }}
             <span slot="subtitle">
-              {{ profile.handle }}
+              @{{ profile.handle }}
             </span>
           </q-card-title>
           <q-card-main>
