@@ -1,88 +1,104 @@
 <template>
-  <q-page class="row justify-center">
-    <div style="width: 800px; max-width: 90vw;">
-      <div class="row justify-center">
-        <h2>Helping Handle</h2>
-      </div>
-      <div class="row justify-center">
-        <img
-          alt="Helping Handle logo"
-          src="~assets/logo-full.svg"
-        >
-      </div>
-      <div class="row justify-center">
-        <p>
-          Helping individuals in need raise money and better their lives for
-          themselves, their families, and their community.
-        </p>
-        <p>
-          Fundraise towards foals, get unstuck, and be the best version of
-          yourself you can be. Start today!
-        </p>
-      </div>
-      <div class="row justify-center">
-        <q-tabs color="indigo-6" align="justify">
-        <q-tab
-          default
-          name="help"
-          slot="title"
-          icon="mdi-gift"
-          label="Help"
-        />
-        <q-tab
-          name="handle"
-          slot="title"
-          icon="mdi-leaf"
-          label="Handle"
-        />
-        <q-tab-pane name="help">
-          <div class="row justify-center">
-            Help someone in need
+  <q-page>
+    <div class="row justify-center">
+      <div class="container shadow-3">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h2 class="q-mb-md">Helping Handle</h2>
           </div>
-          <div class="row justify-center">
-            <q-btn
-              push
-              color="primary"
-              icon="mdi-view-list"
-              label="Explore Campaigns"
-              @click="$router.push('/explore')"
+          <div class="col-12 text-center">
+            <img
+              alt="Helping Handle logo"
+              src="assets/logo-full.svg"
             />
           </div>
-          <div class="row justify-center">
-            <q-search
-              inverted
-              clearable
-              class="col"
-              icon="search"
-              color="indigo-4"
-              placeholder="Search username"
-              v-model="search"
-              @keyup.enter="$router.push('/user/campaigns')"
-             />
+          <div class="col-12 text-left q-pa-lg">
+            <p class="q-subheading">
+              Helping individuals in need raise money and better their
+              lives for themselves, their families, and their community.
+            </p>
+            <p class="q-subheading">
+              Fundraise towards foals, get unstuck, and be the best version of
+              yourself you can be. Start today!
+            </p>
           </div>
-        </q-tab-pane>
-        <q-tab-pane name="handle">
-          <div class="row justify-center">
-            Get a handle on your financial life
+          <div class="col-12">
+            <q-tabs
+              color="indigo-6"
+              position="bottom"
+              align="justify"
+            >
+              <q-tab
+                default
+                name="help"
+                slot="title"
+                icon="mdi-gift"
+                label="Help"
+              />
+              <q-tab
+                name="handle"
+                slot="title"
+                icon="mdi-leaf"
+                label="Handle"
+              />
+              <q-tab-pane name="help">
+                <div class="row justify-center q-ma-sm">
+                  <div class="col-sm-12 col-md-6 q-ma-none q-pa-none">
+                    <q-search
+                      inverted
+                      clearable
+                      icon="search"
+                      color="indigo-8"
+                      placeholder="Search Username"
+                      v-model="search"
+                      @keyup.enter="$router.push('/user/campaigns')"
+                    />
+                  </div>
+                  <div class="col-sm-12 col-md-3 q-ma-none q-pa-none">
+                    <q-btn
+                      class="full-width"
+                      color="indigo-6"
+                      icon-right="mdi-arrow-right-box"
+                      label="Donate"
+                      @click="$router.push('/explore')"
+                    />
+                  </div>
+                  <div class="col-sm-12 col-md-3 q-ma-none q-pa-none">
+                    <q-btn
+                      class="full-width"
+                      color="indigo-4"
+                      icon-right="mdi-view-list"
+                      label="Explore"
+                      @click="$router.push('/explore')"
+                    />
+                  </div>
+                </div>
+              </q-tab-pane>
+              <q-tab-pane name="handle">
+                <div class="row justify-center q-ma-sm">
+                  <div class="col-sm-12 col-md-6 q-ma-none q-pa-none">
+                    <q-btn
+                      class="full-width"
+                      color="indigo-6"
+                      icon-right="mdi-account"
+                      label="Start a Goal"
+                      @click="$router.push('/signup')"
+                    />
+                  </div>
+                  <div class="col-sm-12 col-md-6 q-ma-none q-pa-none">
+                    <q-btn
+                      class="full-width"
+                      color="indigo-8"
+                      icon-right="mdi-view-list"
+                      label="Explore"
+                      @click="$router.push('/login')"
+                    />
+                  </div>
+                </div>
+              </q-tab-pane>
+            </q-tabs>
           </div>
-          <div class="row justify-center">
-            <q-btn
-              push
-              color="secondary"
-              icon="mdi-account"
-              label="Start a Goal"
-              @click="$router.push('/signup')"
-            />
-            <q-btn
-              push
-              color="deep-orange"
-              icon="home"
-              label="Login"
-              @click="$router.push('/login')"
-            />
-          </div>
-        </q-tab-pane>
-      </q-tabs>
+        </div>
       </div>
     </div>
   </q-page>
@@ -100,11 +116,17 @@ export default {
 </script>
 
 <style scoped lang="stylus">
+  .container
+    width 600px
+    max-width 100vw
+
   img
-    width: 128px
-    height: 128px
+    width 160px
+    height 160px
+
+  .q-btn-group
+    width 100%
+
   .q-btn
-    margin: 5px
-  .q-tab-pane
-    width: 600px
+    padding: 10.5px
 </style>
