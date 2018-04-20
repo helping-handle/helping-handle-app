@@ -5,12 +5,32 @@ export default [
     path: '/',
     component: () => import('layouts/Default'),
     children: [
-      { path: '',          component: () => import('pages/Welcome') },
-      { path: 'welcome',   component: () => import('pages/Welcome') },
-      { path: 'login',     component: () => import('pages/Login') },
-      { path: 'signup',    component: () => import('pages/SignUp'),    beforeEnter: Guard.noauth },
-      { path: 'dashboard', component: () => import('pages/Dashboard'), beforeEnter: Guard.auth },
-      { path: 'explore',   component: () => import('pages/Explore'),   beforeEnter: Guard.auth }
+      {
+        path: '',
+        component: () => import('pages/Welcome')
+      },
+      {
+        path: 'welcome',
+        component: () => import('pages/Welcome')
+      },
+      {
+        path: 'login',
+        component: () => import('pages/Login')
+      },
+      {
+        path: 'signup',
+        component: () => import('pages/SignUp'),
+        beforeEnter: Guard.noauth
+      },
+      {
+        path: 'dashboard',
+        component: () => import('pages/Dashboard'),
+        beforeEnter: Guard.auth
+      },
+      {
+        path: 'resources',
+        component: () => import('pages/Resources')
+      }
     ]
   },
   {
