@@ -6,6 +6,6 @@ export default {
   },
 
   check () {
-    return SessionStorage.get.item('token').length > 0
+    return SessionStorage.get.item('token') != null
   }
 }

@@ -8,6 +8,7 @@ module.exports = function (ctx) {
   return {
     plugins: [
       'axios',
+      'vuelidate'
     ],
     css: [
       'app.styl'

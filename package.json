@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "vue-auth": "^1.0.0-alpha.1"
+    "vue-auth": "^1.0.0-alpha.1",
+    "vuelidate": "^0.6.2"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
