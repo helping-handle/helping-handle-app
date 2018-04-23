@@ -79,7 +79,7 @@
                   <div class="col-sm-12 col-md-6 q-ma-none q-pa-none">
                     <q-btn
                       class="full-width"
-                      color="indigo-6"
+                      color="indigo-8"
                       icon-right="mdi-account"
                       label="Start a Goal"
                       @click="$router.push('/signup')"
@@ -88,7 +88,7 @@
                   <div class="col-sm-12 col-md-6 q-ma-none q-pa-none">
                     <q-btn
                       class="full-width"
-                      color="indigo-8"
+                      color="indigo-6"
                       icon-right="mdi-view-list"
                       label="Explore"
                       @click="$router.push('/login')"
