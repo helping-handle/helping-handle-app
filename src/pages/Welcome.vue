@@ -120,7 +120,7 @@ export default {
           position: 'bottom',
           message: 'Please enter more than two characters',
           icon: 'keyboard',
-          timeout: 500
+          timeout: 100
         })
       } else {
         this.$store.dispatch('profile/navigateTo', this.search)

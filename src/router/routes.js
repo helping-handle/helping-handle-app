@@ -19,8 +19,7 @@ export default [
       },
       {
         path: 'signup',
-        component: () => import('pages/SignUp'),
-        beforeEnter: Guard.noauth
+        component: () => import('pages/SignUp')
       },
       {
         path: 'dashboard',

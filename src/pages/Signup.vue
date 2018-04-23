@@ -7,18 +7,29 @@
         </q-card-title>
         <q-card-separator />
         <q-card-main>
+          <!-- User Type -->
+          <q-btn-toggle
+            v-model="form.role"
+            toggle-color="indigo-8"
+            class="q-mb-md"
+            :options="[
+              { label: 'Recipient', value: 1 },
+              { label: 'Donor', value: 0 }
+            ]"
+          />
 
           <!-- Full Name -->
           <q-field
-            :error="$v.name.$error"
+            :error="$v.form.name.$error"
             :error-label="nameError"
             icon="mdi-account-card-details"
             helper="Your name will not be shared on the site"
             class="q-mb-md"
           >
             <q-input
-              v-model.trim="name"
-              @blur="$v.name.$touch"
+              v-model.trim="form.name"
+              @blur="$v.form.name.$touch"
+              @keyup.enter="signUp()"
               float-label="Full Name"
               color="indigo-8"
             />
@@ -26,15 +37,16 @@
 
           <!-- Email -->
           <q-field
-            :error="$v.email.$error"
+            :error="$v.form.email.$error"
             :error-label="emailError"
             icon="mail"
             helper="Please enter a valid email address"
             class="q-mb-md"
           >
             <q-input
-              v-model.trim="email"
-              @blur="$v.email.$touch"
+              v-model.trim="form.email"
+              @blur="$v.form.email.$touch"
+              @keyup.enter="signUp()"
               type="email"
               color="indigo-8"
               float-label="Email"
@@ -43,7 +55,7 @@
 
           <!-- Handle -->
           <q-field
-            :error="$v.handle.$error"
+            :error="$v.form.handle.$error"
             :error-label="handleError"
             :count="32"
             icon="mdi-at"
@@ -51,8 +63,9 @@
             class="q-mb-md"
           >
             <q-input
-              v-model.trim="handle"
-              @blur="$v.handle.$touch"
+              v-model.trim="form.handle"
+              @blur="$v.form.handle.$touch"
+              @keyup.enter="signUp()"
               color="indigo-8"
               float-label="Handle"
             />
@@ -60,15 +73,16 @@
 
           <!-- Password -->
           <q-field
-            :error="$v.password.$error || $v.passwordConfirm.$error "
+            :error="$v.form.password.$error || $v.form.passwordConfirm.$error "
             :error-label="passwordError"
             count
             icon="mdi-lock"
             helper="Enter a secure password"
           >
             <q-input
-              v-model="password"
-              @blur="$v.password.$touch"
+              v-model="form.password"
+              @blur="$v.form.password.$touch"
+              @keyup.enter="signUp()"
               type="password"
               color="indigo-8"
               float-label="Password"
@@ -76,8 +90,9 @@
             />
 
             <q-input
-              v-model="passwordConfirm"
-              @blur="$v.passwordConfirm.$touch"
+              v-model="form.passwordConfirm"
+              @blur="$v.form.passwordConfirm.$touch"
+              @keyup.enter="signUp()"
               type="password"
               color="indigo-8"
               float-label="Confirm Password"
@@ -125,28 +140,33 @@ import {
 export default {
   data () {
     return {
-      name: '',
-      email: '',
-      handle: '',
-      password: '',
-      passwordConfirm: ''
+      form: {
+        name: '',
+        email: '',
+        handle: '',
+        role: 1,
+        password: '',
+        passwordConfirm: ''
+      }
     }
   },
   validations: {
-    name: { required },
-    email: { required, email },
-    handle: {
-      required,
-      alphaNum,
-      minLength: minLength(3),
-      maxLength: maxLength(32)
-    },
-    password: {
-      required,
-      minLength: minLength(8)
-    },
-    passwordConfirm: {
-      sameAsPassword: sameAs('password')
+    form: {
+      name: { required },
+      email: { required, email },
+      handle: {
+        required,
+        alphaNum,
+        minLength: minLength(3),
+        maxLength: maxLength(32)
+      },
+      password: {
+        required,
+        minLength: minLength(8)
+      },
+      passwordConfirm: {
+        sameAsPassword: sameAs('password')
+      }
     }
   },
   computed: {
@@ -157,20 +177,20 @@ export default {
       return 'Valid email address is required'
     },
     handleError () {
-      if (!this.$v.handle.minLength) {
+      if (!this.$v.form.handle.minLength) {
         return 'Handle must be 3 or more characters long'
-      } else if (!this.$v.handle.maxLength) {
+      } else if (!this.$v.form.handle.maxLength) {
         return 'Handle cannot be more than 32 characters long'
-      } else if (!this.$v.handle.alphaNum) {
+      } else if (!this.$v.form.handle.alphaNum) {
         return 'Please enter only alphanumeric characters'
       } else {
         return 'Please choose a valid Handle'
       }
     },
     passwordError () {
-      if (!this.$v.password.minLength) {
+      if (!this.$v.form.password.minLength) {
         return 'Password must be at least 8 characters long'
-      } else if (!this.$v.passwordConfirm.sameAsPassword) {
+      } else if (!this.$v.form.passwordConfirm.sameAsPassword) {
         return 'Passwords do not match'
       } else {
         return 'Please enter a valid password'
@@ -178,15 +198,40 @@ export default {
     }
   },
   methods: {
-    submit () {
+    signUp () {
       this.$v.form.$touch()
 
       if (this.$v.form.$error) {
-        this.$q.notify('Please review fields again.')
+        this.$q.notify('There are errors—please review fields.')
         return
       }
 
-      this.$router.push('/login')
+      var user = {
+        user: {
+          name: this.form.name,
+          email: this.form.email,
+          handle: this.form.handle,
+          password: this.form.password,
+          role: this.form.role
+        }
+      }
+
+      this.$authResource
+        .post('/auth', user)
+        .then(response => {
+          this.$q.notify({
+            color: 'positive',
+            message: 'User created! Please log in with your email',
+            icon: 'mdi-thumb-up'
+          })
+          this.$router.push('/login')
+        })
+        .catch(error => {
+          console.log(error)
+          this.$q.notify({
+            message: 'User created! Please log in with your email'
+          })
+        })
     }
   }
 }
@@ -200,6 +245,9 @@ export default {
 
   .q-btn
     margin 5px
+
+  .q-btn-toggle
+    margin-left 42px
 
   div.actions
     width 100%

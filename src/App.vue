@@ -19,20 +19,14 @@ export default {
     }
 
     const error = function httpError (obj) {
-      // setLoading(false)
+      if (obj && obj.response && obj.response.status === 401) {
+        self.$store.dispatch('user/logout')
+      }
 
-      let err = 'Unknown error.'
+      var err = 'Unknown error.'
 
-      if (obj) {
-        if (obj.response) {
-          if (obj.response.status === 401) {
-            self.$store.dispatch('user/logout')
-          } else if (obj.response.data.error_description) {
-            err = obj.response.data.error_description
-          } else if (obj.response.data.error) {
-            err = obj.response.data.error
-          }
-        }
+      if (obj && obj.response && obj.response.data.error) {
+        err = obj.response.data.error
       }
 
       self.$q.notify({
